@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml:1:1-74
+INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml:1:1-74
+INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml:1:1-74
+	package
+		ADDED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml:1:11-71
+		INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+		INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml:1:1-74
+uses-sdk
+INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+		ADDED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+		INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+		ADDED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml
+		INJECTED from C:\work\opensource\AntennaPod\net\download\service-interface\src\main\AndroidManifest.xml

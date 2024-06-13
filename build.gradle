@@ -1,0 +1,60 @@
+buildscript {
+    ext.agpVersion = "8.1.1"
+}
+plugins {
+    id 'com.android.application' version "$agpVersion" apply false
+    id 'com.android.library' version "$agpVersion" apply false
+    id 'com.github.spotbugs' version '4.8.0' apply false
+    id 'checkstyle'
+}
+
+project.ext {
+    // AndroidX
+    annotationVersion = "1.4.0"
+    appcompatVersion = "1.5.1"
+    coreVersion = "1.9.0"
+    fragmentVersion = "1.5.5"
+    mediaVersion = "1.6.0"
+    media3Version = "1.1.1"
+    paletteVersion = "1.0.0"
+    preferenceVersion = "1.1.1"
+    recyclerViewVersion = "1.2.1"
+    viewPager2Version = "1.1.0-beta01"
+    workManagerVersion = "2.7.1"
+    googleMaterialVersion = "1.7.0"
+
+    // Third-party
+    commonslangVersion = "3.6"
+    commonsioVersion = "2.5"
+    jsoupVersion = "1.15.1"
+    glideVersion = "4.13.2"
+    okhttpVersion = "4.12.0"
+    eventbusVersion = "3.3.1"
+    rxAndroidVersion = "2.1.1"
+    rxJavaVersion = "2.2.2"
+
+    //Tests
+    awaitilityVersion = "3.1.6"
+    junitVersion = "4.13"
+    robolectricVersion = "4.11"
+    espressoVersion = "3.5.0"
+    runnerVersion = "1.5.0"
+    rulesVersion = "1.5.0"
+    testCoreVersion = "1.5.0"
+    mockitoVersion = "5.11.0"
+}
+
+checkstyle {
+    toolVersion '10.3.1'
+}
+
+tasks.register('checkstyle', Checkstyle) {
+    minHeapSize = "200m"
+    maxHeapSize = "2g"
+    classpath = files()
+    source "${project.rootDir}"
+    exclude("**/generated-sources/**")
+    exclude("**/gen/**")
+    exclude("**/build/**")
+    exclude("**/generated/**")
+}
