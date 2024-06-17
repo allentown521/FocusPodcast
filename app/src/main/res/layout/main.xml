@@ -12,13 +12,21 @@
     <!-- InconsistentLayout: Tablet layout does not have a drawer -->
     <!-- viewBindingIgnore: Configurations for main.xml must
             agree on the root element's ID -->
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/overview_coordinator_layout"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/overview_coordinator_layout"
+        android:fitsSystemWindows="true"
+        android:background="?attr/colorSurface"
+        android:layout_width="match_parent"
+        android:layout_weight="8"
+        android:layout_height="0dp">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_view"
+            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
@@ -29,13 +37,19 @@
             android:id="@+id/audioplayerFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?android:attr/colorBackground"
-            android:elevation="8dp"
             android:visibility="gone"
-            app:layout_behavior="de.danoeh.antennapod.ui.view.LockableBottomSheetBehavior" />
+            app:layout_behavior="allen.town.podcast.view.LockableBottomSheetBehavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+        <FrameLayout
+            android:id="@+id/bottom_adView"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+        </FrameLayout>
+    </LinearLayout>
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navDrawerFragment"
         android:layout_width="match_parent"

@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -28,7 +29,7 @@ public class ViewPagerBottomSheetBehavior<V extends View> extends BottomSheetBeh
 
     @Override
     View findScrollingChild(View view) {
-        if (view.isNestedScrollingEnabled()) {
+        if (ViewCompat.isNestedScrollingEnabled(view)) {
             return view;
         }
 

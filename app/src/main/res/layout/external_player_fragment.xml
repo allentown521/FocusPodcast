@@ -1,79 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- main.xml中去掉fitsSystemWindows就没有底部的空白，但是去掉statusbar颜色又不能适配非md3主题 -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragmentLayout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/external_player_height"
-    android:background="?attr/selectableItemBackground"
+    app:cardCornerRadius="0dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center_vertical"
-        android:layout_weight="1">
-
-        <ImageView
-            android:id="@+id/imgvCover"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/imageTextContainer"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            android:maxWidth="96dp"
-            android:scaleType="fitCenter"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:cardCornerRadius="6dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/drag_view"
+            app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgvCover"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@color/non_square_icon_background"
-            tools:src="@tools:sample/avatars" />
+            android:contentDescription="@string/media_player"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/backgrounds/scenic" />
+        </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtvTitle"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
                 tools:text="Episode title that is too long and will cause the text to wrap" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txtvAuthor"
+                style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="?android:attr/textColorSecondary"
                 android:ellipsize="end"
                 android:maxLines="1"
-                style="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="?android:attr/textColorSecondary"
                 tools:text="Episode author that is too long and will cause the text to wrap" />
-
         </LinearLayout>
 
-        <de.danoeh.antennapod.ui.screen.playback.PlayButton
-            android:id="@+id/butPlay"
-            android:layout_width="52dp"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/pause_label"
-            android:background="?attr/selectableItemBackground"
-            android:scaleType="fitCenter"
-            android:padding="8dp"
-            app:srcCompat="@drawable/ic_play_48dp"
-            tools:src="@drawable/ic_play_48dp" />
+        <allen.town.focus_common.views.AccentImageView
+            android:src="@drawable/mini_player_skip_back"
+            android:id="@+id/butRev"
+            android:layout_gravity="center_vertical"
+            android:scaleType="center"
+            android:background="?roundSelector"
+            android:padding="10dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"/>
+        <FrameLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/episodeProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:trackCornerRadius="16dp"
+                tools:progress="10" />
+
+            <allen.town.podcast.view.PlayButton
+                android:id="@+id/butPlay"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="?roundSelector"
+                android:padding="6dp"
+                android:contentDescription="@string/pause_label"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_play_48dp"
+                tools:src="@drawable/ic_play_48dp" />
+        </FrameLayout>
+        <allen.town.focus_common.views.AccentImageView
+            android:src="@drawable/mini_player_skip_forward"
+            android:id="@+id/butFF"
+            android:layout_gravity="center_vertical"
+            android:background="?roundSelector"
+            android:scaleType="center"
+            android:padding="10dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"/>
+        <allen.town.focus_common.views.AccentImageView
+            android:padding="4dp"
+            android:id="@+id/queue_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?roundSelector"
+            android:src="@drawable/ic_playlist"
+            android:contentDescription="@string/media_player"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:scaleType="centerCrop" />
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/episodeProgress"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:indeterminate="false"
-        style="?android:attr/progressBarStyleHorizontal"
-        tools:progress="100" />
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -4,13 +4,15 @@ plugins {
 apply from: "../../common.gradle"
 
 android {
-    namespace "de.danoeh.antennapod.parser.media"
+    defaultConfig {
+        namespace "allen.town.podcast.parser.media"
+    }
 }
 
 dependencies {
     implementation project(':model')
 
-    annotationProcessor "androidx.annotation:annotation:$annotationVersion"
+    kapt "androidx.annotation:annotation:$annotationVersion"
 
     implementation "commons-io:commons-io:$commonsioVersion"
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:search="http://schemas.android.com/apk/com.bytehamster.lib.preferencesearch">
+
+    <allen.town.focus_common.common.prefs.supportv7.ATESwitchPreference
+        android:defaultValue="false"
+        app:icon="@drawable/ic_sliders"
+        android:key="feed_audio_effect_pref"
+        android:layout="@layout/list_item_view_switch"
+        android:summary="@string/pref_custom_for_podcast_sum"
+        android:title="@string/pref_custom_for_podcast" />
+
+    <allen.town.focus_common.common.prefs.supportv7.ATESwitchPreference
+        android:defaultValue="false"
+        android:dependency="feed_audio_effect_pref"
+        android:key="feed_skip_silence"
+        android:layout="@layout/list_item_view_switch_no_title"
+        android:title="@string/pref_skip_silence_title"
+        app:icon="@drawable/ic_trim" />
+    <allen.town.focus_common.common.prefs.supportv7.ATESwitchPreference
+        android:defaultValue="false"
+        android:dependency="feed_audio_effect_pref"
+        android:icon="@drawable/ic_volume_adaption"
+        android:key="feed_mono_pref"
+        android:layout="@layout/list_item_view_switch_no_title"
+        android:title="@string/stereo_to_mono" />
+    <allen.town.focus_common.common.prefs.supportv7.ATESwitchPreference
+        android:defaultValue="false"
+        android:dependency="feed_audio_effect_pref"
+        android:icon="@drawable/ic_vocal_enhancement"
+        android:key="feed_loudness_pref"
+        android:layout="@layout/list_item_view_switch_no_title"
+        android:title="@string/vocal_enhancement" />
+
+</PreferenceScreen>

@@ -8,7 +8,7 @@
            android:pivotX="12"
            android:pivotY="12">
         <path android:name="path"
-              android:fillColor="?attr/action_icon_color"
+              android:fillColor="?attr/colorControlNormal"
               android:pathData="@string/svg_animatable_play"/>
     </group>
 </vector>

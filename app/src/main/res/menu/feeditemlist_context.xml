@@ -2,61 +2,72 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@id/skip_episode_item"
+        android:icon="@drawable/ic_skip_24dp"
         android:menuCategory="container"
         android:title="@string/skip_episode_label" />
 
     <item
-        android:id="@+id/remove_inbox_item"
-        android:menuCategory="container"
-        android:title="@string/remove_inbox_label" />
-
-    <item
         android:id="@+id/mark_read_item"
+        android:icon="@drawable/ic_mark_played"
         android:menuCategory="container"
         android:title="@string/mark_read_label" />
 
     <item
         android:id="@+id/mark_unread_item"
+        android:icon="@drawable/ic_mark_unplayed"
         android:menuCategory="container"
         android:title="@string/mark_unread_label" />
 
     <item
         android:id="@+id/add_to_queue_item"
+        android:icon="@drawable/ic_round_playlist_add_24"
         android:menuCategory="container"
         android:title="@string/add_to_queue_label" />
 
     <item
         android:id="@+id/remove_from_queue_item"
+        android:icon="@drawable/ic_playlist_remove"
         android:menuCategory="container"
         android:title="@string/remove_from_queue_label" />
 
     <item
         android:id="@+id/remove_item"
+        android:icon="@drawable/ic_delete"
         android:menuCategory="container"
         android:title="@string/delete_label" />
 
     <item
+        android:id="@+id/download"
+        android:icon="@drawable/ic_download_18"
+        android:title="@string/download_label" />
+
+    <item
         android:id="@+id/add_to_favorites_item"
+        android:icon="@drawable/ic_star_border"
         android:menuCategory="container"
         android:title="@string/add_to_favorite_label" />
 
     <item
         android:id="@+id/remove_from_favorites_item"
+        android:icon="@drawable/ic_star"
         android:menuCategory="container"
         android:title="@string/remove_from_favorite_label" />
 
     <item
         android:id="@+id/reset_position"
+        android:icon="@drawable/ic_baseline_settings_backup_restore_24"
         android:menuCategory="container"
         android:title="@string/reset_position" />
 
     <item
         android:id="@+id/share_item"
+        android:icon="@drawable/ic_share"
         android:menuCategory="container"
         android:title="@string/share_label" />
 
     <item
         android:id="@+id/multi_select"
+        android:icon="@drawable/ic_select_all"
         android:menuCategory="container"
         android:title="@string/multi_select"
         android:visible="false" />

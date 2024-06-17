@@ -4,14 +4,16 @@ plugins {
 apply from: "../../common.gradle"
 
 android {
-    namespace "de.danoeh.antennapod.ui.i18n"
-
-    lint {
+    defaultConfig {
+        namespace "allen.town.podcast.ui.i18n"
+    }
+    lintOptions {
         disable "Typos", "ExtraTranslation", "ImpliedQuantity",
                 "PluralsCandidate", "UnusedQuantity", "TypographyEllipsis"
     }
 }
 
 dependencies {
-    annotationProcessor "androidx.annotation:annotation:$annotationVersion"
+    implementation project(':focus-common')
+    kapt "androidx.annotation:annotation:$annotationVersion"
 }

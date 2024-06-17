@@ -18,19 +18,19 @@
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
-            <RadioButton
+            <allen.town.focus_common.views.AccentRadioButton
                 android:id="@+id/includeRadio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/include_terms" />
+                android:text="@string/episode_filters_include" />
 
-            <RadioButton
+            <allen.town.focus_common.views.AccentRadioButton
                 android:id="@+id/excludeRadio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/exclude_terms" />
+                android:text="@string/episode_filters_exclude" />
 
         </RadioGroup>
 
@@ -40,22 +40,21 @@
             android:layout_height="wrap_content"
             tools:itemCount="2" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <allen.town.focus_common.views.AccentTextInputLayout
             android:id="@+id/termsTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/ic_add"
-            app:endIconContentDescription="@string/add_term"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="?attr/textInputOutlinedDenseStyle">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <allen.town.focus_common.views.CursorAccentTextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:singleLine="true" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </allen.town.focus_common.views.AccentTextInputLayout>
 
         <View
             android:layout_width="match_parent"
@@ -70,27 +69,27 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <CheckBox
+            <allen.town.focus_common.common.views.AccentCheckbox
                 android:id="@+id/durationCheckBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/exclude_episodes_shorter_than" />
-
-            <EditText
-                android:id="@+id/episodeFilterDurationText"
+                android:text="@string/episode_filters_duration" />
+            <allen.town.focus_common.views.AccentTextInputLayout
+                style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:cursorVisible="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:inputType="numberSigned"
-                android:lines="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/time_minutes" />
+                app:hintEnabled="true">
+                <allen.town.focus_common.views.CursorAccentTextInputEditText
+                    android:id="@+id/episodeFilterDurationText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:inputType="numberSigned"
+                    android:lines="1" />
+            </allen.town.focus_common.views.AccentTextInputLayout>
 
         </LinearLayout>
 

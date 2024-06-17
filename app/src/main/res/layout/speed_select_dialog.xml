@@ -1,51 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/playback_speed"
-            style="@style/AntennaPod.TextView.ListItemPrimaryTitle" />
+        <com.google.android.material.textview.MaterialTextView
+                android:text="@string/playback_speed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/FocusPodcast.TextView.ListItemPrimaryTitle"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/add_current_speed_chip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+            style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_current_speed_chip"/>
     </LinearLayout>
 
-    <de.danoeh.antennapod.ui.screen.playback.PlaybackSpeedSeekBar
-        android:id="@+id/speed_seek_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" />
+    <allen.town.podcast.view.PlaybackSpeedSlider
+            android:id="@+id/speed_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp">
+    </allen.town.podcast.view.PlaybackSpeedSlider>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/speed_presets"
-        style="@style/AntennaPod.TextView.ListItemPrimaryTitle" />
+    <com.google.android.material.textview.MaterialTextView
+            android:text="@string/speed_presets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/FocusPodcast.TextView.ListItemPrimaryTitle"
+            android:layout_marginBottom="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/selected_speeds_grid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <CheckBox
-        android:id="@+id/skipSilence"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/pref_skip_silence_title" />
+            android:id="@+id/selected_speeds_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 </LinearLayout>

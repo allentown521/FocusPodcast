@@ -1,0 +1,3 @@
+/secrets.properties
+/app/*.jks
+/app/google-services.json

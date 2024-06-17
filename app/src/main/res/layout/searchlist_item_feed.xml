@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:squareImageView="http://schemas.android.com/apk/allen.town.podcast"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="?attr/selectableItemBackground"
+    android:clipToPadding="false">
+
+
+    <allen.town.podcast.ui.common.SquareImageView
+        android:id="@+id/discovery_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurface"
+        android:src="@drawable/ic_podcast_background"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:outlineProvider="bounds"
+        squareImageView:direction="width"
+        tools:src="@android:drawable/sym_def_app_icon" />
+
+</LinearLayout>
+

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:custom="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/transcript_item"
-        android:icon="@drawable/transcript"
-        android:title="@string/show_transcript"
-        custom:showAsAction="ifRoom">
-    </item>
+        android:id="@+id/extra_info_item"
+        android:icon="@drawable/ic_info"
+        android:title="@string/show_info_label"
+        custom:showAsAction="always"/>
     <item
         android:id="@+id/add_to_favorites_item"
         android:icon="@drawable/ic_star_border"
@@ -36,21 +34,38 @@
 
     <item
         android:id="@+id/audio_controls"
+        android:icon="@drawable/ic_sliders"
         android:title="@string/audio_controls"
-        android:visible="false"
-        custom:showAsAction="never">
+        custom:showAsAction="always">
     </item>
 
     <item
         android:id="@+id/playback_speed"
         android:title="@string/playback_speed"
+        android:icon="@drawable/ic_speed"
         android:visible="false"
         custom:showAsAction="never">
     </item>
 
     <item
+        android:id="@+id/driver_mode"
+        android:icon="@drawable/ic_car"
+        custom:showAsAction="collapseActionView"
+        android:title="@string/drive_mode"
+        android:visible="false">
+    </item>
+
+    <item
+        android:id="@+id/player_switch_to_audio_only"
+        custom:showAsAction="collapseActionView"
+        android:icon="@drawable/music_circle_outline"
+        android:title="@string/player_switch_to_audio_only"
+        android:visible="false">
+    </item>
+
+    <item
         android:id="@+id/open_feed_item"
-        android:icon="@drawable/ic_feed"
+        android:icon="@drawable/ic_episodes"
         custom:showAsAction="collapseActionView"
         android:title="@string/open_podcast"
         android:visible="false">
@@ -64,25 +79,12 @@
         android:visible="false">
     </item>
 
-    <item
-        android:id="@+id/player_switch_to_audio_only"
-        custom:showAsAction="collapseActionView"
-        android:title="@string/player_switch_to_audio_only"
-        android:visible="false">
-    </item>
-
-    <item
-        android:id="@+id/player_show_chapters"
-        custom:showAsAction="never"
-        android:title="@string/chapters_label"
-        android:visible="false">
-    </item>
 
     <item
         android:id="@+id/share_item"
-        android:icon="@drawable/ic_share"
         android:menuCategory="container"
-        custom:showAsAction="always"
-        android:title="@string/share_label">
+        android:icon="@drawable/ic_share"
+        custom:showAsAction="never"
+        android:title="@string/share_label_with_ellipses">
     </item>
 </menu>

@@ -10,14 +10,14 @@
     android:background="?attr/selectableItemBackground"
     android:padding="8dp">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/swipeIcon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:padding="8dp"
         app:srcCompat="@drawable/ic_add" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/swipeActionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

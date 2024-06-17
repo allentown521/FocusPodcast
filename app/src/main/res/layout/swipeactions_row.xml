@@ -13,7 +13,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/swipeDirectionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/swipeActionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,50 +34,15 @@
             android:textSize="14sp"
             tools:text="@string/add_to_queue_label" />
 
-        <Button
+        <allen.town.focus_common.views.AccentMaterialTextButton
             android:id="@+id/changeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:text="@string/change_setting"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
+            style="@style/Widget.Material3.Button.TextButton" />
 
     </RelativeLayout>
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:id="@+id/previewContainer"
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:background="?attr/background_color"
-        android:gravity="center"
-        android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal">
-
-        <include
-            android:id="@+id/mockEpisode"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            layout="@layout/feeditemlist_item" />
-
-        <ImageView
-            android:id="@+id/swipeIcon"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:background="?attr/background_elevated"
-            android:padding="22dp"
-            app:srcCompat="@drawable/ic_add" />
-
-    </LinearLayout>
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

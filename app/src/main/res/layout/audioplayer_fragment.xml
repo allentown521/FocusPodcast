@@ -1,283 +1,371 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/colorBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorSurface"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/colorGradientBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.jetradarmobile.snowfall.SnowfallView
+        android:id="@+id/snowfall_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:snowflakeSpeedMax="4"
+        app:snowflakeSpeedMin="1"
+        app:snowflakesNum="70" />
+
+    <FrameLayout
+        android:id="@+id/statusBarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/status_bar" />
+    </FrameLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/playerFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:elevation="8dp"
-        android:outlineProvider="none"
+        android:layout_alignParentTop="true"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_height="@dimen/external_player_height" />
 
-    <RelativeLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:foreground="?android:windowContentOverlay"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusBarContainer" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:minHeight="?attr/actionBarSize"
-            app:navigationContentDescription="@string/toolbar_back_button_content_description"
-            app:navigationIcon="@drawable/ic_arrow_down" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_above="@id/playtime_layout"
-            android:layout_below="@id/toolbar"
-            android:layout_marginBottom="12dp"
-            android:foreground="?android:windowContentOverlay"
-            android:orientation="vertical" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewSeek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="12dp"
+        android:alpha="0"
+        app:cardBackgroundColor="?attr/colorControlNormal"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/playtime_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:alpha="1">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:layout_alignBottom="@id/pager"
-            android:importantForAccessibility="no"
-            app:srcCompat="@drawable/bg_gradient"
-            app:tint="?android:attr/colorBackground" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewSeek"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtvSeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/pager"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="12dp"
-            android:alpha="0"
-            app:cardBackgroundColor="?attr/seek_background"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            tools:alpha="1">
+            android:gravity="center"
+            android:paddingLeft="24dp"
+            android:paddingTop="4dp"
+            android:paddingRight="24dp"
+            android:paddingBottom="4dp"
+            android:textColor="?android:textColorPrimaryInverse"
+            android:textSize="16sp"
+            tools:text="1:06:29" />
 
-            <TextView
-                android:id="@+id/txtvSeek"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingLeft="24dp"
-                android:paddingTop="4dp"
-                android:paddingRight="24dp"
-                android:paddingBottom="4dp"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                tools:text="1:06:29" />
+    </com.google.android.material.card.MaterialCardView>
 
-        </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:id="@+id/playtime_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pager">
 
-        <LinearLayout
-            android:id="@+id/playtime_layout"
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/sbPosition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layoutDirection="ltr"
-            android:orientation="vertical">
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:clickable="true"
+            android:max="500"
+            tools:progress="100" />
 
-            <de.danoeh.antennapod.ui.screen.playback.audio.ChapterSeekBar
-                android:id="@+id/sbPosition"
-                android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtvPosition"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:clickable="true"
-                android:max="500"
-                tools:progress="100" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="@string/position_default_label"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/text_size_micro" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtvLength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="@string/position_default_label"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/text_size_micro" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/player_control"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/audioplayer_playercontrols_length_big"
+            android:layout_marginBottom="24dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    style="@style/Widget.MaterialComponents.FloatingActionButton"
+                    android:id="@+id/playPauseButton"
+                    android:layout_width="@dimen/audioplayer_playercontrols_length_m"
+                    android:layout_height="@dimen/audioplayer_playercontrols_length_m"
+                    android:layout_centerInParent="true"
+                    app:elevation="0dp"
+                    android:clickable="false" />
+            </FrameLayout>
+
+
+            <allen.town.podcast.view.PlayButton
+                android:id="@+id/butPlay"
+                android:layout_width="@dimen/audioplayer_playercontrols_length_m"
+                android:layout_height="@dimen/audioplayer_playercontrols_length_m"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/audioplayer_playercontrols_margin"
+                android:layout_marginLeft="@dimen/audioplayer_playercontrols_margin"
+                android:layout_marginEnd="@dimen/audioplayer_playercontrols_margin"
+                android:layout_marginRight="@dimen/audioplayer_playercontrols_margin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/pause_label"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_play_48dp"
+                tools:srcCompat="@drawable/ic_play_48dp" />
+
+            <allen.town.focus_common.views.AccentProgressBar
+                android:id="@+id/progLoading"
+                android:layout_width="@dimen/audioplayer_playercontrols_length_big"
+                android:layout_height="@dimen/audioplayer_playercontrols_length_big"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:id="@+id/butRev_l"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp">
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/butPlay"
+                android:layout_toLeftOf="@id/butPlay">
 
-                <de.danoeh.antennapod.ui.screen.playback.audio.NoRelayoutTextView
-                    android:id="@+id/txtvPosition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:text="@string/position_default_label"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/text_size_micro" />
-
-                <de.danoeh.antennapod.ui.screen.playback.audio.NoRelayoutTextView
-                    android:id="@+id/txtvLength"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:textAlignment="textEnd"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:text="@string/position_default_label"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="@dimen/text_size_micro" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/player_control"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp">
-
-                <de.danoeh.antennapod.ui.screen.playback.PlayButton
-                    android:id="@+id/butPlay"
-                    android:layout_width="@dimen/audioplayer_playercontrols_length_big"
-                    android:layout_height="@dimen/audioplayer_playercontrols_length_big"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/audioplayer_playercontrols_margin"
-                    android:layout_marginLeft="@dimen/audioplayer_playercontrols_margin"
-                    android:layout_marginEnd="@dimen/audioplayer_playercontrols_margin"
-                    android:layout_marginRight="@dimen/audioplayer_playercontrols_margin"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/pause_label"
-                    android:padding="8dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_play_48dp"
-                    tools:srcCompat="@drawable/ic_play_48dp" />
-
-                <de.danoeh.antennapod.ui.common.CircularProgressBar
-                    android:layout_width="@dimen/audioplayer_playercontrols_length_big"
-                    android:layout_height="@dimen/audioplayer_playercontrols_length_big"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    app:foregroundColor="?attr/action_icon_color" />
-
-                <ProgressBar
-                    android:id="@+id/progLoading"
-                    android:layout_width="@dimen/audioplayer_playercontrols_length_big"
-                    android:layout_height="@dimen/audioplayer_playercontrols_length_big"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="gone"
-                    style="?android:attr/progressBarStyle" />
-
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/butRev"
                     android:layout_width="@dimen/audioplayer_playercontrols_length"
                     android:layout_height="@dimen/audioplayer_playercontrols_length"
-                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
                     android:layout_marginStart="@dimen/audioplayer_playercontrols_margin"
                     android:layout_marginLeft="@dimen/audioplayer_playercontrols_margin"
-                    android:layout_toStartOf="@id/butPlay"
-                    android:layout_toLeftOf="@id/butPlay"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/rewind_label"
+                    android:foreground="?roundSelector"
+                    android:padding="6dp"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_fast_rewind"
-                    tools:srcCompat="@drawable/ic_fast_rewind" />
+                    app:srcCompat="@drawable/mini_player_skip_back"
+                    tools:srcCompat="@drawable/mini_player_skip_back" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtvRev"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/butRev"
-                    android:layout_alignStart="@id/butRev"
-                    android:layout_alignLeft="@id/butRev"
-                    android:layout_alignEnd="@id/butRev"
-                    android:layout_alignRight="@id/butRev"
+                    android:layout_centerInParent="true"
                     android:clickable="false"
                     android:gravity="center"
+                    android:paddingTop="8dp"
                     android:text="30"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
+            </RelativeLayout>
 
-                <de.danoeh.antennapod.ui.common.PlaybackSpeedIndicatorView
-                    android:id="@+id/butPlaybackSpeed"
-                    android:layout_width="@dimen/audioplayer_playercontrols_length"
-                    android:layout_height="@dimen/audioplayer_playercontrols_length"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@id/butRev"
-                    android:layout_toLeftOf="@id/butRev"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/playback_speed"
-                    app:foregroundColor="?attr/action_icon_color"
-                    tools:srcCompat="@drawable/ic_playback_speed" />
 
-                <TextView
-                    android:id="@+id/txtvPlaybackSpeed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/butPlaybackSpeed"
-                    android:layout_alignStart="@id/butPlaybackSpeed"
-                    android:layout_alignLeft="@id/butPlaybackSpeed"
-                    android:layout_alignEnd="@id/butPlaybackSpeed"
-                    android:layout_alignRight="@id/butPlaybackSpeed"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:text="1.00"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="12sp" />
 
-                <ImageButton
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtvPlaybackSpeed"
+                android:layout_width="@dimen/audioplayer_playercontrols_length"
+                android:layout_height="@dimen/audioplayer_playercontrols_length"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/butRev_l"
+                android:layout_toLeftOf="@id/butRev_l"
+                android:background="?roundSelector"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="1.0x"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/butFF_l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/butPlay"
+                android:layout_toRightOf="@id/butPlay">
+
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/butFF"
                     android:layout_width="@dimen/audioplayer_playercontrols_length"
                     android:layout_height="@dimen/audioplayer_playercontrols_length"
-                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
                     android:layout_marginEnd="@dimen/audioplayer_playercontrols_margin"
                     android:layout_marginRight="@dimen/audioplayer_playercontrols_margin"
-                    android:layout_toEndOf="@id/butPlay"
-                    android:layout_toRightOf="@id/butPlay"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/fast_forward_label"
+                    android:foreground="?roundSelector"
+                    android:padding="6dp"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_fast_forward"
-                    tools:srcCompat="@drawable/ic_fast_forward" />
+                    app:srcCompat="@drawable/mini_player_skip_forward"
+                    tools:srcCompat="@drawable/mini_player_skip_forward" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtvFF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/butFF"
-                    android:layout_alignStart="@id/butFF"
-                    android:layout_alignLeft="@id/butFF"
-                    android:layout_alignEnd="@id/butFF"
-                    android:layout_alignRight="@id/butFF"
+                    android:layout_centerInParent="true"
                     android:clickable="false"
                     android:gravity="center"
+                    android:paddingTop="8dp"
                     android:text="30"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="12sp" />
-
-                <ImageButton
-                    android:id="@+id/butSkip"
-                    android:layout_width="@dimen/audioplayer_playercontrols_length"
-                    android:layout_height="@dimen/audioplayer_playercontrols_length"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/butFF"
-                    android:layout_toRightOf="@id/butFF"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/skip_episode_label"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/ic_skip_48dp"
-                    tools:srcCompat="@drawable/ic_skip_48dp" />
-
+                    android:textSize="11sp" />
             </RelativeLayout>
 
-        </LinearLayout>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/butSkip"
+                android:layout_width="@dimen/audioplayer_playercontrols_length"
+                android:layout_height="@dimen/audioplayer_playercontrols_length"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/butFF_l"
+                android:layout_toRightOf="@id/butFF_l"
+                android:foreground="?roundSelector"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/skip_episode_label"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_skip_24dp"
+                tools:srcCompat="@drawable/ic_skip_24dp" />
 
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playtime_layout"
+        app:navigationContentDescription="@string/toolbar_back_button_content_description"
+        app:navigationIcon="@drawable/ic_keyboard_arrow_down_black" />
+
+    <RelativeLayout
+        android:id="@+id/slide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/playtime_layout"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/swipe_up_iv"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_double_arrow_up" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/swipe_up_tip_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/swipe_to_unlock"
+                android:textColor="?android:attr/textColorPrimary" />
+        </LinearLayout>
     </RelativeLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

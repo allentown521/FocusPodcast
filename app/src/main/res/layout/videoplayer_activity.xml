@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/videoPlayerContainer"
@@ -9,13 +8,13 @@
     android:background="@color/black"
     android:orientation="vertical">
 
-    <de.danoeh.antennapod.ui.screen.playback.video.AspectRatioVideoView
+    <allen.town.podcast.view.AspectRatioVideoView
         android:id="@+id/videoView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <ProgressBar
+    <allen.town.focus_common.views.AccentProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,21 +27,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layoutDirection="ltr"
         android:background="@android:color/transparent"
-        android:padding="16dp"
-        android:orientation="horizontal">
+        android:layoutDirection="ltr"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/rewindButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/rewind_label"
-            app:srcCompat="@drawable/ic_fast_rewind_video_white" />
+            app:srcCompat="@drawable/ic_fast_rewind" />
 
-        <de.danoeh.antennapod.ui.screen.playback.PlayButton
+        <allen.town.podcast.view.PlayButton
             android:id="@+id/playButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +50,7 @@
             android:contentDescription="@string/pause_label"
             app:srcCompat="@drawable/ic_pause_video_white" />
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/fastForwardButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,13 +61,13 @@
 
     </LinearLayout>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/skipAnimationImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_gravity="center"
         android:padding="64dp"
-        android:layout_gravity="center" />
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/bottomControlsContainer"
@@ -77,19 +76,19 @@
         android:layout_gravity="bottom|center"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/seekCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:alpha="0"
-            android:layout_marginBottom="12dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="12dp"
+            android:alpha="0"
+            app:cardBackgroundColor="?colorControlNormal"
             app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="?attr/seek_background"
             app:cardElevation="0dp"
             tools:alpha="1">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/seekPositionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,62 +101,69 @@
                 android:textSize="24sp"
                 tools:text="1:06:29" />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#80000000"
+            android:background="#20000000"
             android:layoutDirection="ltr"
             android:paddingTop="8dp">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/positionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/position_default_label"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/durationLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginStart="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/position_default_label"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
-            <SeekBar
+            <allen.town.focus_common.views.AccentSeekbar
                 android:id="@+id/sbPosition"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/durationLabel"
-                android:layout_toStartOf="@+id/durationLabel"
-                android:layout_toRightOf="@+id/positionLabel"
-                android:layout_toEndOf="@+id/positionLabel"
                 android:layout_centerInParent="true"
+                android:layout_toStartOf="@+id/durationLabel"
+                android:layout_toLeftOf="@+id/durationLabel"
+                android:layout_toEndOf="@+id/positionLabel"
+                android:layout_toRightOf="@+id/positionLabel"
                 android:max="500" />
 
         </RelativeLayout>
 
     </LinearLayout>
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Toolbar"
+        android:layout_height="?actionBarSize"
+        app:layout_collapseMode="pin"
+        app:navigationIcon="@drawable/ic_keyboard_backspace_black"
+        app:titleTextAppearance="@style/ToolbarTextAppearanceNormal" />
 </FrameLayout>

@@ -1,45 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
     android:importantForAccessibility="no"
-    android:orientation="vertical"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:paddingLeft="12dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        tools:background="@android:color/holo_red_dark" />
-
-    <LinearLayout
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/filter_iv"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_round_error_outline_24"
+        tools:visibility="visible" />
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/nav_feeds_filtered_message"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:src="@drawable/ic_info" />
-
-        <TextView
-            android:id="@+id/nav_feeds_filtered_message_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:gravity="start"
-            android:paddingTop="4dp"
-            android:text="@string/subscriptions_are_filtered"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textSize="@dimen/text_size_small" />
-
-    </LinearLayout>
-
+        android:gravity="start"
+        android:paddingStart="4dp"
+        android:paddingEnd="@dimen/listitem_icon_leftpadding"
+        tools:text="test it"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="@dimen/text_size_small" />
 </LinearLayout>

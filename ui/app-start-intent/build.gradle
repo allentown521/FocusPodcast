@@ -2,11 +2,12 @@ plugins {
     id("com.android.library")
 }
 apply from: "../../common.gradle"
-
 android {
-    namespace "de.danoeh.antennapod.ui.appstartintent"
+    defaultConfig {
+        namespace "allen.town.podcast.ui.startintent"
+    }
 }
-
 dependencies {
-    annotationProcessor "androidx.annotation:annotation:$annotationVersion"
+    implementation project(':focus-common')
+    kapt "androidx.annotation:annotation:$annotationVersion"
 }

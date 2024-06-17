@@ -4,13 +4,18 @@ plugins {
 apply from: "../../common.gradle"
 
 android {
-    namespace "de.danoeh.antennapod.parser.feed"
+    defaultConfig {
+        namespace "allen.town.podcast.parser.feed"
+    }
+    lintOptions {
+        disable "TrustAllX509TrustManager"
+    }
 }
 
 dependencies {
     implementation project(':model')
 
-    annotationProcessor "androidx.annotation:annotation:$annotationVersion"
+    kapt "androidx.annotation:annotation:$annotationVersion"
 
     implementation "androidx.core:core:$coreVersion"
 

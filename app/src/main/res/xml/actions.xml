@@ -1,7 +1,7 @@
 <?xml version ="1.0" encoding ="utf-8"?>
 <actions>
     <action intentName="actions.intent.OPEN_APP_FEATURE">
-        <fulfillment urlTemplate="https://antennapod.org/deeplink/main{?page}">
+        <fulfillment urlTemplate="https://focuspodcast.com/deeplink/main{?page}">
             <parameter-mapping intentParameter="feature" urlParameter="page" />
         </fulfillment>
         <parameter name="feature">
@@ -10,16 +10,17 @@
     </action>
 
     <action intentName="actions.intent.GET_THING">
-        <fulfillment urlTemplate="https://antennapod.org/deeplink/search{?query}">
+        <fulfillment urlTemplate="https://focuspodcast.com/deeplink/search{?query}">
             <parameter-mapping intentParameter="thing.name" urlParameter="query"/>
         </fulfillment>
     </action>
 
     <entity-set entitySetId="featureEntitySet">
-        <entity identifier="QUEUE" name="@string/queue_label" />
-        <entity identifier="EPISODES" name="@string/episodes_label" />
-        <entity identifier="DOWNLOADS" name="@string/downloads_label" />
-        <entity identifier="SUBSCRIPTIONS" name="@string/subscriptions_label" />
-        <entity identifier="HISTORY" name="@string/playback_history_label" />
+        <entity identifier="playlist" name="@string/playlist_label" />
+        <entity identifier="episodes" name="@string/episodes_label" />
+        <entity identifier="downloads" name="@string/downloads_label" />
+        <entity identifier="subscriptions" name="@string/subscriptions_label" />
+        <entity identifier="history" name="@string/playback_history_label" />
+        <entity identifier="favorite" name="@string/favorite_episodes_label" />
     </entity-set>
 </actions>

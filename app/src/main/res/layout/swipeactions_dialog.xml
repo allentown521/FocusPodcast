@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <LinearLayout
+    <allen.town.focus_common.common.views.ATESwitch
+        android:id="@+id/enableSwitch"
+        app:track="@drawable/switch_track"
+        android:thumb="@drawable/switch_thumb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:checked="true"
+        android:text="@string/enable_swipeactions" />
 
-        <com.google.android.material.materialswitch.MaterialSwitch
-            android:id="@+id/enableSwitch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/enable_swipeactions" />
+    <include
+        android:id="@+id/actionLeftContainer"
+        layout="@layout/swipeactions_row" />
 
-        <include
-            android:id="@+id/actionLeftContainer"
-            layout="@layout/swipeactions_row" />
+    <include
+        android:id="@+id/actionRightContainer"
+        layout="@layout/swipeactions_row" />
 
-        <include
-            android:id="@+id/actionRightContainer"
-            layout="@layout/swipeactions_row" />
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

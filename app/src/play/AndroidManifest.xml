@@ -3,8 +3,11 @@
 
     <application>
         <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${googleAdsKey}"/>
+        <activity
+            android:name="allen.town.podcast.activity.DriveBackupActivity"
+            android:theme="@style/MainTheme" />
     </application>
 
 </manifest>

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="16dp">
 
         <LinearLayout
@@ -24,33 +23,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/etxtTime"
-                    android:layout_width="0dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/times_recycler_view"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:selectAllOnFocus="true"
-                    android:layout_margin="8dp"
-                    android:ems="2"
-                    android:inputType="number"
-                    android:maxLength="3" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/time_minutes"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="8dp" />
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp" />
 
             </LinearLayout>
 
-            <Button
+            <allen.town.focus_common.views.AccentMaterialButton
                 android:id="@+id/setSleeptimerButton"
+                style="@style/Widget.Material3.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/set_sleeptimer_label" />
 
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/timeDisplay"
@@ -59,18 +49,19 @@
             android:orientation="vertical"
             android:visibility="visible">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/time"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="00:00:00"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="32sp"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:text="00:00:00"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="32sp" />
 
-            <Button
+            <allen.town.focus_common.views.AccentMaterialButton
                 android:id="@+id/disableSleeptimerButton"
+                style="@style/Widget.Material3.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/disable_sleeptimer_label" />
@@ -78,93 +69,123 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <Button
+                <allen.town.focus_common.views.AccentMaterialOutlineStatusButton
                     android:id="@+id/extendSleepFiveMinutesButton"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:layout_marginRight="4dp"
+                    android:layout_weight="1"
                     android:paddingHorizontal="2dp"
                     android:paddingVertical="4dp"
-                    android:layout_weight="1"
-                    style="?attr/materialButtonOutlinedStyle"
                     tools:text="+5 min" />
 
-                <Button
+                <allen.town.focus_common.views.AccentMaterialOutlineStatusButton
                     android:id="@+id/extendSleepTenMinutesButton"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
                     android:paddingHorizontal="2dp"
                     android:paddingVertical="4dp"
-                    android:layout_weight="1"
-                    style="?attr/materialButtonOutlinedStyle"
                     tools:text="+10 min" />
 
-                <Button
+                <allen.town.focus_common.views.AccentMaterialOutlineStatusButton
                     android:id="@+id/extendSleepTwentyMinutesButton"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginRight="4dp"
                     android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_weight="1"
                     android:paddingHorizontal="2dp"
                     android:paddingVertical="4dp"
-                    android:layout_weight="1"
-                    style="?attr/materialButtonOutlinedStyle"
                     tools:text="+20 min" />
 
             </LinearLayout>
 
         </LinearLayout>
 
+        <View
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/dividerHorizontal"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp">
-
-            <CheckBox
-                android:id="@+id/cbShakeToReset"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/shake_to_reset_label" />
-
-            <CheckBox
-                android:id="@+id/cbVibrate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/timer_vibration_label" />
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
+                android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/chAutoEnable"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/auto_enable_label" />
-
-                <ImageView
-                    android:id="@+id/changeTimesButton"
+                <allen.town.focus_common.views.AccentImageView
+                    style="@style/Widget.Material3.Button.IconButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/auto_enable_change_times"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    app:srcCompat="@drawable/ic_settings" />
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_shake" />
 
+                <allen.town.focus_common.common.views.ATESwitch
+                    android:id="@+id/cbShakeToReset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shake_to_reset_label"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <allen.town.focus_common.views.AccentImageView
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_round_vibration_24" />
+
+                <allen.town.focus_common.common.views.ATESwitch
+                    android:id="@+id/cbVibrate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/timer_vibration_label"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <allen.town.focus_common.views.AccentImageView
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_auto" />
+
+                <allen.town.focus_common.common.views.ATESwitch
+                    android:id="@+id/chAutoEnable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/auto_enable_label"
+                    android:thumb="@drawable/switch_thumb"
+                    app:track="@drawable/switch_track" />
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>

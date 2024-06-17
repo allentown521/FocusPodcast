@@ -1,0 +1,12 @@
+[submodule "focus-common"]
+	path = focus-common
+	url = https://github.com/allentown521/focus-common.git
+[submodule "focus-purchase"]
+	path = focus-purchase
+	url = https://github.com/allentown521/focus-purchase.git
+[submodule "focus-themecore"]
+	path = focus-themecore
+	url = https://github.com/allentown521/focus-themecore.git
+[submodule "searchpreference"]
+	path = searchpreference
+	url = https://github.com/allentown521/searchpreference.git

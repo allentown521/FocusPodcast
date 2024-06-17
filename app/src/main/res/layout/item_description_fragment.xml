@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<de.danoeh.antennapod.ui.view.NestedScrollableHost
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="false"
-    android:nestedScrollingEnabled="true"
-    app:preferVertical="10">
+    android:background="?colorSurface"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- 如果不加这个，那么viewpager的第二个item不显示骨架原因未知 -->
+    <com.faltenreich.skeletonlayout.SkeletonLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/skeletonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
-    <de.danoeh.antennapod.ui.view.ShownotesWebView
+        <include layout="@layout/list_item_recyclerview_skeleton"/>
+
+    </com.faltenreich.skeletonlayout.SkeletonLayout>
+    <me.zhanghai.android.fastscroll.FastScrollNestedScrollView
+        android:id="@+id/nested_scroll"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <allen.town.podcast.view.PodWebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"/>
+    </me.zhanghai.android.fastscroll.FastScrollNestedScrollView>
 
-</de.danoeh.antennapod.ui.view.NestedScrollableHost>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

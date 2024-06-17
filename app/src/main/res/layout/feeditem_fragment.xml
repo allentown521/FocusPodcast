@@ -1,234 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/header"
+
+    <me.zhanghai.android.fastscroll.FastScrollScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imgvCover"
-                android:layout_width="@dimen/thumbnail_length_queue_item"
-                android:layout_height="@dimen/thumbnail_length_queue_item"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@string/open_podcast"
-                android:foreground="?attr/selectableItemBackground"
-                tools:src="@tools:sample/avatars" />
 
             <LinearLayout
+                android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp">
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
-                <TextView
-                    android:id="@+id/txtvPodcast"
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:importantForAccessibility="no"
-                    style="@style/AntennaPod.TextView.ListItemSecondaryTitle"
-                    tools:text="Podcast title" />
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="24dp">
 
-                <TextView
-                    android:id="@+id/txtvTitle"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgvCover"
+                        android:layout_width="164dp"
+                        android:layout_height="164dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="?attr/colorSurface"
+                        android:contentDescription="@string/open_podcast"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:outlineProvider="bounds"
+                        android:scaleType="centerCrop"
+                        tools:src="@tools:sample/avatars" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtvPublished"
+                    style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:ellipsize="end"
-                    android:maxLines="5"
-                    tools:text="@sample/episodes.json/data/title" />
+                    tools:background="@android:color/holo_green_dark"
+                    tools:text="Jan 23" />
+
+                <LinearLayout
+                    android:id="@+id/txtvPodcast_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:foreground="?rectSelector"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <allen.town.focus_common.views.AccentTextView
+                        android:id="@+id/txtvPodcast"
+                        style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:importantForAccessibility="no"
+                        android:textSize="16sp"
+                        tools:background="@android:color/holo_green_dark"
+                        tools:text="Podcast title , long text title , yes ,i am a long title long ong than you can see" />
+
+                    <allen.town.focus_common.views.AccentImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        app:srcCompat="@drawable/ic_round_keyboard_arrow_right_24" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/txtvDuration"
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtvTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/AntennaPod.TextView.ListItemSecondaryTitle"
-                        tools:text="@sample/episodes.json/data/duration" />
-
-                    <TextView
-                        android:id="@+id/separatorIcons"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginEnd="4dp"
-                        android:importantForAccessibility="no"
-                        android:text="·"
-                        style="@style/AntennaPod.TextView.ListItemSecondaryTitle" />
-
-                    <TextView
-                        android:id="@+id/txtvPublished"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/AntennaPod.TextView.ListItemSecondaryTitle"
-                        tools:text="Jan 23" />
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:background="@android:color/holo_green_dark"
+                        tools:text="@sample/episodes.json/data/title" />
 
                 </LinearLayout>
 
-            </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:baselineAligned="false">
-
-            <LinearLayout
-                android:id="@+id/butAction1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:background="?android:attr/selectableItemBackground"
-                android:gravity="center">
-
-                <ImageView
-                    android:id="@+id/butAction1Icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    tools:src="@drawable/ic_settings" />
-
-                <TextView
-                    android:id="@+id/butAction1Text"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    android:textColor="?android:attr/textColorPrimary"
-                    tools:text="Button 1" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/butAction2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:background="?android:attr/selectableItemBackground"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_gravity="bottom|end">
-
-                    <de.danoeh.antennapod.ui.common.CircularProgressBar
-                        android:id="@+id/circularProgressBar"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_gravity="center"
+                    <LinearLayout
+                        android:id="@+id/download_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         android:visibility="gone"
-                        app:foregroundColor="?android:attr/textColorPrimary" />
+                        tools:visibility="visible">
 
-                    <ImageView
-                        android:id="@+id/butAction2Icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        tools:src="@drawable/ic_settings" />
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
-                </FrameLayout>
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/progbarDownload"
+                                style="@style/CircularProgressIndicator_Download"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="invisible"
+                                app:trackCornerRadius="16dp"
+                                tools:progress="10"
+                                tools:visibility="visible" />
 
-                <TextView
-                    android:id="@+id/butAction2Text"
-                    android:layout_width="wrap_content"
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/downloadIcon"
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_gravity="center"
+                                android:background="?roundSelector"
+                                android:padding="8dp"
+                                android:scaleType="centerCrop"
+                                tools:src="@drawable/ic_cancel" />
+                        </FrameLayout>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tv_item_size"
+                            style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:background="@android:color/holo_green_dark"
+                            tools:text="23 MB" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/add_to_queue_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/add_to_queue_item_icon"
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_gravity="center"
+                                android:background="?roundSelector"
+                                android:padding="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_round_playlist_add_24" />
+                        </FrameLayout>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/add_to_queue_label"
+                            tools:background="@android:color/holo_green_dark" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/remove_from_queue_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/remove_from_queue_item_icon"
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_gravity="center"
+                                android:background="?roundSelector"
+                                android:padding="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_playlist_remove" />
+                        </FrameLayout>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/remove_from_queue_label"
+                            tools:background="@android:color/holo_green_dark" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/add_to_favorites_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/add_to_favorites_item_icon"
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_gravity="center"
+                                android:background="?roundSelector"
+                                android:padding="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_star_border" />
+                        </FrameLayout>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/add_to_favorite_label"
+                            tools:background="@android:color/holo_green_dark" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/remove_from_favorites_item"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/remove_from_favorites_item_icon"
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_gravity="center"
+                                android:background="?roundSelector"
+                                android:padding="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_star" />
+                        </FrameLayout>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/remove_from_favorite_label"
+                            tools:background="@android:color/holo_green_dark" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progbarPlayed"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
-                    android:textColor="?android:attr/textColorPrimary"
-                    tools:text="Button 2" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:max="100"
+                    android:visibility="invisible"
+                    app:trackCornerRadius="16dp"
+                    tools:progress="10"
+                    tools:visibility="visible" />
 
             </LinearLayout>
 
-        </LinearLayout>
 
-        <TextView
-            android:id="@+id/nonSubscribedWarningLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
-            android:layout_marginBottom="8dp"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            android:background="@drawable/bg_message_info"
-            android:textColor="?attr/colorAccent"
-            android:visibility="gone"
-            android:foreground="?attr/selectableItemBackground"
-            android:text="@string/state_deleted_not_subscribed" />
+            <com.faltenreich.skeletonlayout.SkeletonLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/skeletonLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header"
+                android:padding="8dp">
 
-        <TextView
-            android:id="@+id/noMediaLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:textAlignment="center"
-            android:background="?android:attr/dividerVertical"
-            android:text="@string/no_media_label" />
+                <include layout="@layout/list_item_recyclerview_skeleton" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/dividerVertical" />
+            </com.faltenreich.skeletonlayout.SkeletonLayout>
 
-    </LinearLayout>
+            <allen.town.podcast.view.PodWebView
+                android:id="@+id/webvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header"
+                android:foreground="?android:windowContentOverlay" />
 
-    <de.danoeh.antennapod.ui.view.NestedScrollableHost
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
-        app:preferVertical="3">
-
-        <de.danoeh.antennapod.ui.view.ShownotesWebView
-            android:id="@+id/webvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foreground="?android:windowContentOverlay" />
-
-    </de.danoeh.antennapod.ui.view.NestedScrollableHost>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ProgressBar
-            android:id="@+id/progbarLoading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true" />
-
-    </FrameLayout>
+        </RelativeLayout>
+    </me.zhanghai.android.fastscroll.FastScrollScrollView>
 
 </RelativeLayout>

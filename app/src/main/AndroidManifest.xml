@@ -3,81 +3,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="auto">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!-- target 33 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"/>
+        android:xlargeScreens="true" />
 
     <uses-feature
         android:name="android.hardware.screen.portrait"
-        android:required="false"/>
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.touchscreen"
-        android:required="false"/>
-
+        android:required="false" />
+<!--    <uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-sdk tools:overrideLibrary="com.paul623.wdsyncer"/>
     <application
-        android:name="de.danoeh.antennapod.PodcastApp"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:backupAgent=".storage.importexport.OpmlBackupAgent"
-        android:restoreAnyVersion="true"
-        android:theme="@style/Theme.AntennaPod.Splash"
-        android:usesCleartextTraffic="true"
-        android:supportsRtl="true"
-        android:logo="@mipmap/ic_launcher"
-        android:resizeableActivity="true"
+        android:name="allen.town.podcast.MyApp"
         android:allowAudioPlaybackCapture="true"
-        android:networkSecurityConfig="@xml/network_security_config">
-
+        android:backupAgent="allen.town.podcast.core.backup.OPMLBackupAgent"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:resizeableActivity="true"
+        android:restoreAnyVersion="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FocusPodcast.Splash"
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+        tools:replace="android:icon,android:allowBackup">
         <activity
-            android:name=".ui.screen.playback.PlaybackSpeedDialogActivity"
-            android:noHistory="true"
-            android:exported="false"
-            android:excludeFromRecents="true"
-            android:theme="@style/Theme.AntennaPod.Light.Translucent">
-            <intent-filter>
-                <action android:name="de.danoeh.antennapod.intents.PLAYBACK_SPEED" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <meta-data android:name="android.webkit.WebView.MetricsOptOut"
-            android:value="true"/>
-        <meta-data android:name="com.google.android.gms.car.notification.SmallIcon"
-            android:resource="@drawable/ic_notification"/>
+            android:name="allen.town.podcast.activity.SimpleToolbarActivity"
+            android:exported="false" />
+        <meta-data
+            android:name="android.webkit.WebView.MetricsOptOut"
+            android:value="true" /> <!-- Used by Android Auto -->
+        <meta-data
+            android:name="com.google.android.gms.car.notification.SmallIcon"
+            android:resource="@drawable/ic_notification" />
         <meta-data
             android:name="com.google.android.gms.car.application"
-            android:resource="@xml/automotive_app_desc"/>
+            android:resource="@xml/automotive_app_desc" />
         <meta-data
             android:name="com.google.android.backup.api_key"
-            android:value="AEdPqrEAAAAI3a05VToCTlqBymJrbFGaKQMvF-bBAuLsOdavBA"/>
+            android:value="AEdPqrEAAAAI3a05VToCTlqBymJrbFGaKQMvF-bBAuLsOdavBA" />
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
-            android:value="de.danoeh.antennapod.playback.cast.CastOptionsProvider" />
-
-        <!-- Version < 3.0. DeX Mode and Screen Mirroring support -->
-        <meta-data android:name="com.samsung.android.keepalive.density" android:value="true"/>
-        <!-- Version >= 3.0. DeX Dual Mode support -->
-        <meta-data android:name="com.samsung.android.multidisplay.keep_process_alive" android:value="true"/>
+            android:value="allen.town.podcast.playback.cast.CastOptionsProvider" /> <!-- Version < 3.0. DeX Mode and Screen Mirroring support -->
+        <meta-data
+            android:name="com.samsung.android.keepalive.density"
+            android:value="true" /> <!-- Version >= 3.0. DeX Dual Mode support -->
+        <meta-data
+            android:name="com.samsung.android.multidisplay.keep_process_alive"
+            android:value="true" />
 
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="allen.town.podcast.activity.LockScreenActivity"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="allen.town.focus.podcast.LockScreenActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name="allen.town.podcast.activity.DriveModeActivity" />
+        <activity
+            android:name="allen.town.podcast.activity.SplashActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH" />
@@ -88,17 +100,33 @@
                 <category android:name="android.intent.category.APP_MUSIC" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
+        </activity>
+        <activity android:name="allen.town.podcast.activity.PurchaseActivity" />
+        <activity
+            android:name="com.dropbox.core.android.AuthActivity"
+            android:exported="true"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask">
+            <intent-filter>
+
+                <!-- Change this to be db- followed by your app key -->
+                <data android:scheme="db-mg97zk12mma2xqk" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <activity
-            android:name=".activity.MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|density|uiMode|keyboard|navigation"
-            android:windowSoftInputMode="stateAlwaysHidden"
+            android:name="allen.town.podcast.activity.MainActivity"
+            android:exported="true"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|density|keyboard|navigation"
+            android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:exported="true">
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -106,155 +134,293 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="antennapod.org"
+                    android:host="focuspodcast.com"
                     android:pathPrefix="/deeplink/main"
                     android:scheme="https" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
                 <data
-                    android:host="antennapod.org"
+                    android:host="focuspodcast.com"
                     android:pathPrefix="/deeplink/search"
                     android:scheme="https" />
             </intent-filter>
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <action android:name="de.danoeh.antennapod.intents.MAIN_ACTIVITY" />
+                <action android:name="allen.town.podcast.intents.MAIN_ACTIVITY" />
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".ui.screen.preferences.PreferenceActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="false"
-            android:label="@string/settings_label">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.danoeh.antennapod.activity.MainActivity"/>
-            <intent-filter>
-                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".activity.OpmlImportActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/opml_import_label"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <action android:name="android.intent.action.SEND"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
-                <data android:mimeType="text/xml"/>
-                <data android:mimeType="text/x-opml"/>
-                <data android:mimeType="application/xml"/>
-
-                <data android:scheme="file"/>
-                <data android:scheme="content"/>
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-
-                <data android:host="*"/>
-                <data android:pathPattern="/.*.opml" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".ui.screen.preferences.BugReportActivity"
-                android:label="@string/bug_report_title">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="de.danoeh.antennapod.ui.screen.preferences.PreferenceActivity"/>
-        </activity>
-
-        <activity
-            android:name=".ui.screen.playback.video.VideoplayerActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
-            android:supportsPictureInPicture="true"
-            android:screenOrientation="sensorLandscape"
-            android:exported="false">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.danoeh.antennapod.activity.MainActivity"/>
-            <intent-filter>
-                <action android:name="de.danoeh.antennapod.intents.VIDEO_PLAYER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
+
         <activity
-            android:name=".ui.screen.onlinefeedview.OnlineFeedViewActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.AntennaPod.Dark.Translucent"
-            android:label="@string/add_feed_label"
-            android:exported="true">
+            android:name="allen.town.podcast.activity.FeedAuthenticationActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.FocusPodcast.Dialog" />
+        <activity
+            android:name="allen.town.podcast.activity.SettingsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/settings_label"
+            android:theme="@style/MainTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.danoeh.antennapod.activity.MainActivity"/>
+                android:value="allen.town.podcast.activity.MainActivity" />
+        </activity>
+
+        <activity
+            android:name="allen.town.podcast.activity.CreateSubscriptionShortcutActivity"
+            android:exported="true"
+            android:icon="@drawable/ic_folder_shortcut_black"
+            android:label="@string/shortcut_subscription_label"
+            android:theme="@style/Theme.FocusPodcast.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="allen.town.podcast.core.widget.appwidgets.AppWidgetClassic"
+            android:exported="true"
+            android:label="@string/app_widget_classic_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="allen.town.podcast.FORCE_WIDGET_UPDATE" />
+                <action android:name="allen.town.podcast.STOP_WIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_classic_info" />
+        </receiver>
+
+        <receiver
+            android:name="allen.town.podcast.core.widget.appwidgets.AppWidgetCircle"
+            android:exported="true"
+            android:label="@string/app_widget_circle_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_circle_info" />
+        </receiver>
+
+        <receiver
+            android:name="allen.town.podcast.core.widget.appwidgets.AppWidgetText"
+            android:exported="true"
+            android:label="@string/app_widget_text_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_text_info" />
+        </receiver>
+
+        <receiver
+            android:name="allen.town.podcast.core.widget.appwidgets.AppWidgetMD3"
+            android:exported="true"
+            android:label="@string/app_widget_md3_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_md3_info" />
+        </receiver>
+
+        <receiver
+            android:name="allen.town.podcast.core.widget.appwidgets.AppWidgetBig"
+            android:exported="true"
+            android:label="@string/app_widget_big_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_big_info" />
+        </receiver>
+
+
+        <receiver
+            android:name="allen.town.podcast.core.widget.appwidgets.AppWidgetMD"
+            android:exported="true"
+            android:label="@string/app_widget_md_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_md_info" />
+        </receiver>
+
+
+        <activity
+            android:name="allen.town.podcast.activity.ImportOPMLActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:label="@string/opml_import_label"
+            android:theme="@style/MainTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:mimeType="text/xml" />
+                <data android:mimeType="text/x-opml" />
+                <data android:mimeType="application/xml" />
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+                <data android:pathPattern=".*.xml" />
+                <data android:pathPattern=".*.opml" />
+            </intent-filter>
+            <intent-filter android:label="@string/opml_import_label">
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:host="*" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\\.opml" />
+                <data android:pathPattern=".*\\.xml" />
+            </intent-filter>
+            <intent-filter android:label="@string/opml_import_label">
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:host="*" />
+                <data android:mimeType="application/xml" />
+                <data android:mimeType="text/html" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="text/xml" />
+                <data android:pathPattern=".*\\.opml" />
+                <data android:pathPattern=".*\\.xml" />
+            </intent-filter>
+            <intent-filter android:label="@string/opml_import_label">
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.opml"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.xml"
+                    android:scheme="file" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.opml"
+                    android:scheme="content" />
+                <data
+                    android:host="*"
+                    android:mimeType="*/*"
+                    android:pathPattern=".*\\.xml"
+                    android:scheme="content" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name="allen.town.podcast.activity.VideoPlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            android:supportsPictureInPicture="true"
+            android:theme="@style/MainTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="allen.town.podcast.activity.MainActivity" />
+
+            <intent-filter>
+                <action android:name="allen.town.podcast.intents.VIDEO_PLAYER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="allen.town.podcast.activity.RssSearchActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:label="@string/add_feed_label"
+            android:theme="@style/Theme.FocusPodcast.Dialog">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="allen.town.podcast.activity.MainActivity" />
 
             <!-- URLs ending with '.xml' or '.rss' -->
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:host="*"/>
-                <data android:pathPattern="/.*\\.xml"/>
-                <data android:pathPattern="/.*\\.rss"/>
-                <data android:pathPattern="/.*\\.atom"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.xml" />
+                <data android:pathPattern=".*\\.rss" />
+                <data android:pathPattern=".*\\.atom" />
             </intent-filter>
 
             <!-- Feedburner URLs -->
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:host="feeds.feedburner.com"/>
-                <data android:host="feedproxy.google.com"/>
-                <data android:host="feeds2.feedburner.com"/>
-                <data android:host="feedsproxy.google.com"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="feeds.feedburner.com" />
+                <data android:host="feedproxy.google.com" />
+                <data android:host="feeds2.feedburner.com" />
+                <data android:host="feedsproxy.google.com" />
             </intent-filter>
 
             <!-- Files with mimeType rss/xml/atom -->
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:mimeType="text/xml"/>
-                <data android:mimeType="application/rss+xml"/>
-                <data android:mimeType="application/atom+xml"/>
-                <data android:mimeType="application/xml"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:mimeType="text/xml" />
+                <data android:mimeType="application/rss+xml" />
+                <data android:mimeType="application/atom+xml" />
+                <data android:mimeType="application/xml" />
             </intent-filter>
 
             <!-- Podcast protocols -->
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="itpc"/>
-                <data android:scheme="pcast"/>
-                <data android:scheme="feed"/>
-                <data android:scheme="antennapod-subscribe"/>
+                <data android:scheme="itpc" />
+                <data android:scheme="pcast" />
+                <data android:scheme="feed" />
+                <data android:scheme="focuspodcast-subscribe" />
             </intent-filter>
 
             <!-- Support for subscribeonandroid.com URLS -->
@@ -264,27 +430,25 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:pathPattern="/.*\\..*/.*" />
+                <data android:pathPattern=".*\\..*/.*" />
                 <data android:host="subscribeonandroid.com" />
                 <data android:host="www.subscribeonandroid.com" />
                 <data android:host="*subscribeonandroid.com" />
                 <data android:scheme="http" />
                 <data android:scheme="https" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="antennapod.org" />
-                <data android:host="www.antennapod.org" />
+                <data android:host="focuspodcast.com" />
+                <data android:host="www.focuspodcast.com" />
                 <data android:pathPrefix="/deeplink/subscribe" />
                 <data android:scheme="http" />
                 <data android:scheme="https" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -296,51 +460,55 @@
                 <data android:scheme="http" />
                 <data android:scheme="https" />
             </intent-filter>
-
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
+                <action android:name="android.intent.action.SEND" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <data android:mimeType="text/plain"/>
-            </intent-filter>
-
-            <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
-                <action android:name="de.danoeh.antennapod.intents.ONLINE_FEEDVIEW" />
-            </intent-filter>
-        </activity>
 
-        <activity android:name=".activity.SelectSubscriptionActivity"
-            android:label="@string/shortcut_subscription_label"
-            android:icon="@drawable/ic_shortcut_subscriptions"
-            android:theme="@style/Theme.AntennaPod.Dark.Translucent"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
 
         <receiver
-            android:name=".spa.SPAReceiver"
+            android:name="allen.town.podcast.receiver.ConnectivityChangeReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="de.danoeh.antennapdsp.intent.SP_APPS_QUERY_FEEDS_RESPONSE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="allen.town.podcast.receiver.PowerConnectionReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
 
+        <service
+            android:name=".core.service.QuickSettingsTileService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/play_label"
+            android:icon="@drawable/ic_notification"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data android:name="android.service.quicksettings.ACTIVE_TILE" android:value="true" />
+        </service>
+
         <provider
-            android:authorities="@string/provider_authority"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="@string/provider_authority"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
 
         <meta-data
-            tools:ignore="Deprecated"
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
     </application>

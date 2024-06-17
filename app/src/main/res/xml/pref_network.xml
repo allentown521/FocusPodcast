@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:numberpicker="http://schemas.android.com/apk/allen.town.podcast"
+    xmlns:search="http://schemas.android.com/apk/com.bytehamster.lib.preferencesearch">
+    <allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/automation">
+        <allen.town.focus_common.common.prefs.supportv7.ATESwitchPreference
+            android:layout="@layout/list_item_view_switch_no_title"
+            android:key="pref_refresh_on_start"
+            android:title="@string/pref_refresh_on_start_title"
+            android:defaultValue="false"/>
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+            android:icon="@drawable/ic_refresh"
+            android:key="pref_auto_refresh_interval"
+            android:layout="@layout/list_item_view_no_title"
+            android:summary="@string/feed_refresh_sum"
+            android:title="@string/feed_refresh_title" />
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+            android:icon="@drawable/ic_auto_download"
+            android:key="prefAutoDownloadSettings"
+            android:layout="@layout/list_item_view_no_title"
+            android:title="@string/pref_automatic_download_title"
+            search:ignore="true" />
+    </allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory>
+
+    <allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/pref_mobile_network">
+        <allen.town.focus_common.common.prefs.supportv7.ATEMultiListPreference
+            android:defaultValue="@array/mobile_update_default_value"
+            android:entries="@array/mobile_update_entries"
+            android:entryValues="@array/mobile_update_values"
+            android:icon="@drawable/ic_round_signal_cellular_alt_24"
+            android:key="pref_mobile_update_types"
+            android:layout="@layout/list_item_view_no_title"
+            android:title="@string/pref_mobileUpdate_sum" />
+
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory
+            android:layout="@layout/preference_category_title"
+            android:title="@string/pref_geek">
+            <allen.town.podcast.pref.NumberPickerPreference
+                android:defaultValue="4"
+                android:key="pref_parallel_downloads"
+                android:layout="@layout/list_item_view"
+                android:title="@string/pref_parallel_downloads_title"
+                numberpicker:maxValue="50"
+                numberpicker:minValue="1" />
+            <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+                android:icon="@drawable/ic_round_vpn_lock_24"
+                android:key="prefProxy"
+                android:layout="@layout/list_item_view_no_title"
+                android:summary="@string/pref_proxy_sum"
+                android:title="@string/pref_proxy_title" />
+        </allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory>
+    </allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory>
+</PreferenceScreen>

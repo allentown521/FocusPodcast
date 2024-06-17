@@ -4,5 +4,5 @@
     <item
         android:id="@+id/select_toggle"
         android:title="@string/select_all_label"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 </menu>

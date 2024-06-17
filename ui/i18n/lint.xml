@@ -7,8 +7,4 @@
     <issue id="UnusedResources" severity="error">
         <ignore path="**/values-**/strings.xml" />
     </issue>
-
-    <issue id="MissingQuantity" severity="error">
-        <ignore path="**/values-**/strings.xml" />
-    </issue>
 </lint>
