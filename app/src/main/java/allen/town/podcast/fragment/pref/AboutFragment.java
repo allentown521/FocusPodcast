@@ -112,9 +112,7 @@ public class AboutFragment extends AppCompatDialogFragment {
         if(!MyApp.getInstance().isAlipay()){
             checkUpradeView.setVisibility(View.GONE);
         }
-        if(!MyApp.getInstance().isDroid()){
-            opensourceView.setVisibility(View.GONE);
-        }
+
         butterknife.ViewCollections.run(this.styleButtons, (view, i) -> ((ImageView) view)
                 .setColorFilter(ThemeStore.accentColor(getContext()), PorterDuff.Mode.SRC_IN));
         return new AccentMaterialDialog(getContext(),R.style.MaterialAlertDialogTheme).setView(inflate).create();
