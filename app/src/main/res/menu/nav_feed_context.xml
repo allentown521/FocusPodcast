@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/edit_tags"
+        android:icon="@drawable/ic_tag"
+        android:menuCategory="container"
+        android:title="@string/edit_tags" />
+
+    <item
+        android:id="@+id/rename_item"
+        android:icon="@drawable/ic_edit"
+        android:menuCategory="container"
+        android:title="@string/rename_feed_label" />
+
+    <item
+        android:id="@+id/shortcut_item"
+        android:icon="@drawable/ic_outline_widgets_24"
+        android:menuCategory="container"
+        android:title="@string/create_feed_shortcut" />
+
+    <item
+        android:id="@+id/remove_feed"
+        android:icon="@drawable/ic_unsubscribe"
+        android:menuCategory="container"
+        android:title="@string/remove_feed_label" />
+
+    <item
+        android:id="@+id/multi_select"
+        android:icon="@drawable/ic_select_all"
+        android:menuCategory="container"
+        android:title="@string/multi_select"
+        android:visible="false" />
+</menu>

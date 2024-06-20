@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:squareImageView="http://schemas.android.com/apk/allen.town.podcast"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cover_fragment"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/black"
+    android:orientation="vertical"
+    android:gravity="center">
+    <Space
+        android:id="@+id/counterweight"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+    <allen.town.podcast.ui.common.SquareImageView
+        android:id="@+id/imgvCover"
+        android:visibility="gone"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:layout_weight="0"
+        android:foreground="?rectSelector"
+        android:importantForAccessibility="no"
+        android:scaleType="fitCenter"
+        squareImageView:direction="height"
+        tools:src="@android:drawable/sym_def_app_icon" />
+
+    <LinearLayout
+        android:id="@+id/cover_fragment_text_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtvEpisodeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="none"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:textAppearance="@style/TextViewHeadline4"
+            android:textColor="@color/md_white_1000"
+            android:textStyle="bold"
+            android:textIsSelectable="false"
+            tools:text="Episode" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtvPodcastTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?rectSelector"
+            android:ellipsize="none"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:paddingTop="8dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:textAppearance="@style/TextViewHeadline5"
+            android:textColor="@color/md_grey_200"
+            android:textIsSelectable="false"
+            tools:text="Podcast" />
+
+
+
+        <Space
+            android:id="@+id/vertical_divider"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/details_spacer"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/episode_details"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_weight="0"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+
+        <LinearLayout
+            android:id="@+id/chapterButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minWidth="180dp"
+            tools:visibility="visible"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/butPrevChapter"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:foreground="?roundSelector"
+                android:contentDescription="@string/prev_chapter"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_round_navigate_before_24" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chapters_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="?rectSelector"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/chapters_label"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/text_size_navdrawer" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/butNextChapter"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:foreground="?roundSelector"
+                android:contentDescription="@string/next_chapter"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_round_navigate_next_24" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

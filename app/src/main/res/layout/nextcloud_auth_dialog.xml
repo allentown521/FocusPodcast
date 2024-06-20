@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:clipToPadding="false">
+
+    <allen.town.focus_common.views.AccentTextInputLayout
+        android:id="@+id/serverUrlTextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        style="?attr/textInputOutlinedDenseStyle">
+
+        <allen.town.focus_common.views.CursorAccentTextInputEditText
+            android:id="@+id/serverUrlText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/gpodnetauth_host"
+            android:inputType="textNoSuggestions"
+            android:lines="1"
+            android:imeOptions="actionNext|flagNoFullscreen" />
+
+    </allen.town.focus_common.views.AccentTextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/loginProgressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical">
+
+        <allen.town.focus_common.views.AccentProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/synchronization_nextcloud_authenticate_browser" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/errorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:textColor="@color/download_failed_red"
+        android:layout_marginBottom="16dp" />
+
+    <allen.town.focus_common.views.AccentMaterialButton
+        android:id="@+id/loginButton"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/gpodnetauth_login_butLabel" />
+
+</LinearLayout>

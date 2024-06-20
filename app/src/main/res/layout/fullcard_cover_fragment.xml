@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:squareImageView="http://schemas.android.com/apk/allen.town.podcast"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cover_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/imgvCover_c"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="64dp"
+        app:cardCornerRadius="@dimen/m3_card_medium_radius"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@id/episode_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgvCover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:foreground="?rectSelector"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            squareImageView:direction="height"
+            tools:src="@android:drawable/sym_def_app_icon" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:id="@+id/cover_fragment_text_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgvCover_c"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtvEpisodeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textIsSelectable="false"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Episode" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtvPodcastTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?rectSelector"
+            android:ellipsize="none"
+            android:gravity="center_horizontal"
+            android:paddingLeft="18dp"
+            android:paddingTop="2dp"
+            android:paddingRight="18dp"
+            android:paddingBottom="2dp"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textIsSelectable="false"
+            android:textSize="16sp"
+            tools:text="Podcast"
+            android:singleLine="true" />
+
+
+        <Space
+            android:id="@+id/vertical_divider"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/episode_details"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgvCover_c"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="36dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
+
+
+        <LinearLayout
+            android:id="@+id/chapterButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minWidth="180dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/butPrevChapter"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/prev_chapter"
+                android:foreground="?roundSelector"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_round_navigate_before_24" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/chapters_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:background="?rectSelector"
+                android:gravity="center"
+                android:text="@string/chapters_label"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="@dimen/text_size_navdrawer" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/butNextChapter"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/next_chapter"
+                android:foreground="?roundSelector"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_round_navigate_next_24" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

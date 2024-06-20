@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:orientation="vertical">
+
+        <allen.town.focus_common.views.AccentMaterialButton
+            android:id="@+id/audio_tracks"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <allen.town.focus_common.views.AccentImageView
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_trim" />
+
+            <allen.town.focus_common.common.views.ATESwitch
+                android:id="@+id/skipSilence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pref_skip_silence_title"
+                android:thumb="@drawable/switch_thumb"
+                app:track="@drawable/switch_track" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <allen.town.focus_common.views.AccentImageView
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_volume_adaption" />
+
+            <allen.town.focus_common.common.views.ATESwitch
+                android:id="@+id/stereo_to_mono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/stereo_to_mono"
+                android:thumb="@drawable/switch_thumb"
+                app:track="@drawable/switch_track" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <allen.town.focus_common.views.AccentImageView
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_vocal_enhancement" />
+
+            <allen.town.focus_common.common.views.ATESwitch
+                android:id="@+id/vocal_enhancement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vocal_enhancement"
+                android:thumb="@drawable/switch_thumb"
+                app:track="@drawable/switch_track" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/equalizer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?rectSelector"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <allen.town.focus_common.views.AccentImageView
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_equalizer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/equalizer"
+                android:textColor="?android:textColorPrimary" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/custom_effect_l"
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:cardBackgroundColor="?colorSecondaryContainer"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="false">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@string/custom_effect_applied"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:textColor="?colorSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_gravity="center_vertical|right"
+                android:id="@+id/custom_effect_clear"
+                android:text="@string/clear"
+                android:textSize="16sp"
+                android:textAllCaps="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+</ScrollView>
+

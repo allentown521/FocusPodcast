@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?rectSelector"
+    android:checkable="true"
+    app:cardElevation="0dp"
+    app:checkedIcon="@null"
+    app:strokeWidth="0dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?rectSelector"
+    android:paddingLeft="16dp"
+    android:paddingTop="8dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="8dp">
+
+    <RelativeLayout
+        android:id="@+id/top_l"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgvCover"
+            android:layout_width="@dimen/thumbnail_length_itemlist"
+            android:layout_height="@dimen/thumbnail_length_itemlist"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:importantForAccessibility="no"
+            android:scaleType="fitXY"
+            tools:background="@android:color/holo_green_dark"
+            tools:src="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:id="@+id/title_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_toLeftOf="@id/subscribe_button"
+            android:layout_toRightOf="@id/imgvCover"
+            android:orientation="vertical">
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtvTitle"
+                    style="@style/FocusPodcast.TextView.ListItemPrimaryTitle2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    tools:background="@android:color/holo_green_dark"
+                    tools:text="Podcast title" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtvPubDate"
+                    style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?third_text_color"
+                    tools:text="2022年6月21日" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/separatorIcons"
+                    style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:importantForAccessibility="no"
+                    android:text="·"
+                    android:textColor="?android:attr/textColorHint"
+                    tools:background="@android:color/holo_blue_light" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtvAuthor"
+                    style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="middle"
+                    android:maxLines="2"
+                    android:textColor="?android:attr/textColorHint"
+                    tools:background="@android:color/holo_green_dark"
+                    tools:text="author" />
+
+                <allen.town.focus_common.views.AccentImageView
+                    android:id="@+id/ivIsVideo"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:layout_marginLeft="4dp"
+                    android:layout_width="16sp"
+                    android:layout_height="16sp"
+                    android:contentDescription="@string/media_type_video_label"
+                    app:srcCompat="@drawable/ic_round_videocam_24" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/playing_lottie"
+                    android:layout_width="32dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="12dp"
+                    android:visibility="gone"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="83782-playing-remix.json"
+                    app:lottie_loop="true"
+                    app:lottie_speed="0.8"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <allen.town.podcast.view.PlayPauseProgressButton
+            android:id="@+id/subscribe_button"
+            style="@style/Widget_PlayerFM_PlayPauseButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:background="?roundSelector"
+            app:circleFillColor="@color/accent_dark"
+            app:circleRingWidth="1.2dp"
+            app:circleShadowAlpha="30"
+            app:circleShadowRadius="2"
+            app:iconSize="20dp"
+            app:innerSize="32dp"
+            app:pauseIconSrc="@drawable/ic_add"
+            app:playIconSrc="@drawable/ic_round_check_24"
+            app:progressColorPaused="@color/md_yellow_A400"
+            app:showCircleShadow="false"
+            app:showInnerBorder="false"
+            app:showPulsingAnimation="false" />
+    </RelativeLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtvSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_l"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:paddingTop="4dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="14sp"
+        tools:text="三等奖傅雷家书两个胜利大街个价格sdfg;sdkg; ds;lgk s;dlkg 胜利大街个老师的价格两个落地生根是劳动工具类似的感觉收到了开关键胜利大街个了几个螺丝刀开关收到了根据十多个零售价大概" />
+</RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

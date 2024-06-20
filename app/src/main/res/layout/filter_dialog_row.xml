@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButtonToggleGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:paddingBottom="8dp"
+    app:selectionRequired="false"
+    app:singleSelection="true">
+
+
+    <allen.town.focus_common.views.AccentMaterialOutlineBackgroundStatusButton
+        android:id="@+id/filter_dialog_radioButton1"
+        style="?attr/materialButtonOutlinedStyle"
+        tools:text="it is a test button"
+        android:paddingLeft="8dp"
+        android:paddingRight="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:checked="false" />
+
+    <allen.town.focus_common.views.AccentMaterialOutlineBackgroundStatusButton
+        android:id="@+id/filter_dialog_radioButton2"
+        style="?attr/materialButtonOutlinedStyle"
+        tools:text="it is a test button,it is long,\n very long,long long 2"
+        android:paddingLeft="8dp"
+        android:paddingRight="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:checked="false" />
+</com.google.android.material.button.MaterialButtonToggleGroup>
