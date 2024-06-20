@@ -32,7 +32,7 @@ include ':ui:common'
 include ':ui:i18n'
 include ':ui:png-icons'
 include ':focus-common'
-include ':focus-themeCore'
+include ':focus-themecore'
 include ':focus-purchase'
 include ':searchpreference'
 
