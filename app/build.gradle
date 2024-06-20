@@ -1,0 +1,266 @@
+plugins {
+    id('com.android.application')
+    id('com.wyjson.gorouter')
+    id('com.github.triplet.play') version '3.9.0' apply false
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+apply from: "../common.gradle"
+//apply from: "../playFlavor.gradle"
+
+android {
+    def secrets = new Properties()
+    File secretsFile = rootProject.file('secrets.properties')
+
+    defaultConfig {
+        namespace "allen.town.podcast"
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        applicationId rootProject.ext.applicationId
+
+
+        if (secretsFile.exists()) {
+            secrets.load(new FileInputStream(secretsFile))
+            buildConfigField "String", "PODCASTINDEX_API_KEY", secrets['podcastindexApiKey']
+            buildConfigField "String", "PODCASTINDEX_API_SECRET", secrets['podcastindexApiSecret']
+            buildConfigField "String", "GOOGLE_PAY_PUBLIC_KEY", secrets['googlePayPublicKey']
+            buildConfigField "String", "ALIPAY_APP_PRIVATE_KEY", secrets['alipayAppPrivateKey']
+            buildConfigField "String", "ALIPAY_APP_PUBLIC_KEY", secrets['alipayAppPublicKey']
+            buildConfigField "String", "ALIPAY_PUBLIC_KEY", secrets['alipayPublicKey']
+            buildConfigField "String", "ALIPAY_APP_ID", secrets['alipayAppId']
+            buildConfigField "String", "ALIPAY_PID", secrets['alipayPid']
+            buildConfigField "String", "POCKET_AD_APP_ID", secrets['pocketAdAppId']
+        } else {
+            println "signing.properties file does not exist. Please make sure the file is properly configured.View Readme to learn about it."
+        }
+
+        manifestPlaceholders = [
+                googleAdsKey: secrets['googleAdsKey']
+        ]
+
+        kapt {
+            arguments {
+                arg('eventBusIndex', 'allen.town.podcast.ApEventBusIndex')
+            }
+        }
+    }
+
+    signingConfigs {
+        releaseConfig {
+            enableV1Signing true
+            enableV2Signing true
+            storeFile file(secrets.getProperty('storeFile'))
+            storePassword secrets.getProperty('storePassword')
+            keyAlias secrets.getProperty('keyAlias')
+            keyPassword secrets.getProperty('keyPassword')
+        }
+
+        debugConfig {
+            storeFile file(secrets.getProperty('storeFile'))
+            storePassword secrets.getProperty('storePassword')
+            keyAlias secrets.getProperty('keyAlias')
+            keyPassword secrets.getProperty('keyPassword')
+
+        }
+    }
+
+    buildTypes {
+        debug {
+            resValue "string", "provider_authority", "allen.town.focus.podcast.file_provider"
+            signingConfig signingConfigs.debugConfig
+        }
+        release {
+            resValue "string", "provider_authority", "allen.town.focus.podcast.file_provider"
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
+            signingConfig signingConfigs.releaseConfig
+        }
+    }
+
+    lintOptions {
+        disable 'ObsoleteLintCustomCheck', 'CheckResult', 'UnusedAttribute', 'BatteryLife', 'InflateParams',
+                'RestrictedApi', 'TrustAllX509TrustManager', 'ExportedReceiver', 'AllowBackup', 'VectorDrawableCompat',
+                'StaticFieldLeak', 'UseCompoundDrawables', 'NestedWeights', 'Overdraw', 'UselessParent', 'TextFields',
+                'AlwaysShowAction', 'Autofill', 'ClickableViewAccessibility', 'ContentDescription',
+                'KeyboardInaccessibleWidget', 'LabelFor', 'SetTextI18n', 'HardcodedText', 'RelativeOverlap',
+                'RtlCompat', 'RtlHardcoded', 'MissingMediaBrowserServiceIntentFilter', 'VectorPath',
+                'InvalidPeriodicWorkRequestInterval'
+    }
+
+    aaptOptions {
+        additionalParameters "--no-version-vectors"
+    }
+
+    dexOptions {
+        jumboMode true
+    }
+
+    //禁止上传Mapping文件到Google服务器
+    gradle.taskGraph.whenReady {
+        tasks.each { task ->
+            if (task.name.contains("uploadCrashlyticsMappingFile")) {
+                task.enabled = false
+            }
+        }
+    }
+
+
+    configurations.all {
+        resolutionStrategy.force "androidx.fragment:fragment:$fragmentVersion"
+        resolutionStrategy.force "com.google.android.datatransport:transport-backend-cct:3.1.7"
+
+        resolutionStrategy {
+//            force "com.google.android.exoplayer:exoplayer:2.14.2"
+//            force "com.google.android.exoplayer:exoplayer-common:2.14.2"
+        }
+    }
+}
+
+
+
+dependencies {
+    implementation project(":core")
+    implementation project(":event")
+    implementation project(':model')
+    implementation project(':net:sync:gpoddernet')
+    implementation project(':net:sync:model')
+    implementation project(':parser:feed')
+    implementation project(':playback:base')
+    implementation project(':playback:cast')
+    implementation project(':storage:database')
+    implementation project(':ui:app-start-intent')
+    implementation project(':ui:common')
+    implementation project(':ui:i18n')
+    implementation project(':focus-common')
+    implementation project(':focus-purchase')
+    implementation project(':searchpreference')
+//    implementation 'com.google.android.play:feature-delivery:2.0.0'
+//    implementation 'com.google.android.play:review:2.0.0'
+
+    kapt "androidx.annotation:annotation:$annotationVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation "androidx.core:core:$coreVersion"
+    implementation "androidx.fragment:fragment:$fragmentVersion"
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation "androidx.media:media:$mediaVersion"
+    implementation "androidx.palette:palette:$paletteVersion"
+    implementation "androidx.preference:preference:$preferenceVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    implementation "androidx.viewpager2:viewpager2:$viewPager2Version"
+    implementation "androidx.work:work-runtime:$workManagerVersion"
+    implementation "com.google.android.material:material:$googleMaterialVersion"
+
+    implementation "org.apache.commons:commons-lang3:$commonslangVersion"
+    implementation "commons-io:commons-io:$commonsioVersion"
+    implementation "org.jsoup:jsoup:$jsoupVersion"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$okhttpVersion"
+    implementation "com.squareup.okio:okio:$okioVersion"
+    implementation "org.greenrobot:eventbus:$eventbusVersion"
+    kapt "org.greenrobot:eventbus-annotation-processor:$eventbusVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+//    implementation 'com.alibaba:fastjson:1.2.37'
+//    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+    implementation "com.joanzapata.iconify:android-iconify-fontawesome:$iconifyVersion"
+    implementation "com.joanzapata.iconify:android-iconify-material:$iconifyVersion"
+    implementation 'com.github.shts:TriangleLabelView:1.1.2'
+    implementation 'com.leinardi.android:speed-dial:3.2.0'
+    implementation 'com.github.mfietz:fyydlin:v0.5.0'
+    playImplementation 'com.google.android.ads:mediation-test-suite:2.0.0'
+//    implementation 'com.github.ByteHamster:SearchPreference:v2.1.0'
+    implementation 'com.github.skydoves:balloon:1.4.0'
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.3'
+    implementation 'com.annimon:stream:1.2.2'
+    implementation 'com.github.jetradarmobile:android-snowfall:1.2.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01'
+    // Non-free dependencies:
+//    playImplementation 'com.google.android.play:core:1.8.0'
+    compileOnly "com.google.android.wearable:wearable:$wearableSupportVersion"
+//    implementation 'me.tankery.lib:circularSeekBar:1.3.2'
+    freeImplementation 'com.baidu.mobstat:mtj-sdk:4.0.3.5'
+    implementation 'com.r0adkll:slidableactivity:2.1.0'
+    /*这里升级4.1.0下载不下来，gradle:7.0.0或以上在setting.gradle中添加如下代码,https://github.com/azhon/AppUpdate
+    * 按照这个修改也不行，同时看app目录的dialog_update的说明，不要轻易更新
+    * */
+    freeImplementation 'io.github.azhon:appupdate:4.3.1'
+    implementation "com.github.skydoves:androidveil:1.1.2"
+    implementation "org.zeroturnaround:zt-zip:1.14"
+    implementation 'net.lingala.zip4j:zip4j:2.9.1'
+    implementation 'com.github.paul623:WebDavSyncerDemo:0.0.5'
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    kapt 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation 'com.faltenreich:skeletonlayout:4.0.0'
+    implementation 'com.github.ChickenHook:RestrictionBypass:2.2'
+
+    playImplementation 'com.google.firebase:firebase-core:21.0.0'
+    freeImplementation 'com.google.firebase:firebase-core:21.0.0'
+    playImplementation 'com.applovin:applovin-sdk:11.4.4'
+
+    // Add the dependencies for the Firebase Cloud Messaging and Analytics libraries
+    playImplementation 'com.google.firebase:firebase-messaging:23.0.7'
+    playImplementation "com.google.firebase:firebase-inappmessaging-display:19.1.2"
+    playImplementation 'com.google.firebase:firebase-analytics:21.1.0'
+    playImplementation 'com.google.firebase:firebase-perf:20.1.0'
+    freeImplementation 'com.google.firebase:firebase-messaging:23.0.7'
+    freeImplementation "com.google.firebase:firebase-inappmessaging-display:19.1.2"
+    freeImplementation 'com.google.firebase:firebase-analytics:21.1.0'
+    freeImplementation 'com.google.firebase:firebase-perf:20.1.0'
+
+    //drive
+    playImplementation 'com.microsoft.onedrivesdk:onedrive-picker-android:v2.0'
+    playImplementation 'com.dropbox.core:dropbox-core-sdk:3.1.5'
+    playImplementation ('com.google.apis:google-api-services-drive:v3-rev110-1.23.0'){
+        exclude group:'com.google.guava'
+        exclude group:'commons-logging'
+        exclude group:'commons-codec'
+        exclude group: 'org.apache.httpcomponents'
+    }
+
+    playImplementation ('com.google.android.gms:play-services-auth:19.0.0'){
+        exclude group:'com.google.guava'
+        exclude group:'commons-logging'
+        exclude group:'commons-codec'
+        exclude group: 'org.apache.httpcomponents'
+    }
+    playImplementation ('com.google.http-client:google-http-client-gson:1.26.0'){
+        exclude group:'com.google.guava'
+        exclude group:'commons-logging'
+        exclude group:'commons-codec'
+        exclude group: 'org.apache.httpcomponents'
+    }
+    playImplementation ('com.google.api-client:google-api-client-android:1.26.0'){
+        exclude group:'com.google.guava'
+        exclude group:'commons-logging'
+        exclude group:'commons-codec'
+        exclude group: 'org.apache.httpcomponents'
+    }
+    // drive end
+
+    androidTestImplementation "org.awaitility:awaitility:$awaitilityVersion"
+    androidTestImplementation 'com.nanohttpd:nanohttpd:2.1.1'
+    androidTestImplementation "com.jayway.android.robotium:robotium-solo:$robotiumSoloVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test:runner:$runnerVersion"
+    androidTestImplementation "androidx.test:rules:$rulesVersion"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+}
+
+
+task copyLicense(type: Copy) {
+    from "../LICENSE"
+    into "src/main/assets/"
+    rename { String fileName ->
+        fileName + ".txt"
+    }
+}
+
+preBuild.dependsOn copyLicense

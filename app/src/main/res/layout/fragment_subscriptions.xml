@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <allen.town.podcast.core.view.TopAppBarLayout
+            android:id="@+id/appBarLayout"
+            style="?appBarLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/CenteredCheckBoxTheme" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/coordinatorLayout"
+            android:orientation="vertical"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <allen.town.podcast.view.MultiSwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <allen.town.focus_common.views.GridRecyclerView
+                    android:id="@+id/subscriptions_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="88dp"
+
+                    tools:itemCount="2"
+                    tools:listitem="@layout/subscription_item" />
+            </allen.town.podcast.view.MultiSwipeRefreshLayout>
+        </LinearLayout>
+
+        <allen.town.focus_common.views.AccentFloatingActionButton
+            android:id="@+id/subscriptions_add"
+            style="@style/Widget.Material3.FloatingActionButton.Primary"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/add_feed_label"
+            app:srcCompat="@drawable/ic_discover" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

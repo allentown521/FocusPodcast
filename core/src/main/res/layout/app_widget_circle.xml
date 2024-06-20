@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:theme="@style/Theme.Material3.DynamicColors.DayNight">
+
+    <ImageView
+        android:id="@+id/imgvCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/default_audio_art"
+        tools:src="@tools:sample/backgrounds/scenic[0]" />
+
+    <TextView
+        android:id="@+id/txtvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:layout_centerInParent="true"
+        android:maxLines="2"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:shadowColor="@color/md_black_1000"
+        android:shadowRadius="8"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="test "
+        android:textAppearance="@style/TextViewHeadline6"
+        android:textColor="@color/md_white_1000" />
+
+    <ImageButton
+        android:id="@+id/butPlayExtended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imgvCover"
+        android:layout_alignBottom="@+id/imgvCover"
+        android:layout_margin="4dp"
+        android:background="@drawable/widget_button_background"
+        android:backgroundTint="?attr/colorSurface"
+        android:clickable="false"
+        android:padding="18dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_widget_play" />
+</RelativeLayout>

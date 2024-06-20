@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:search="http://schemas.android.com/apk/com.bytehamster.lib.preferencesearch">
+
+    <allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory
+        android:layout="@layout/preference_category_title" android:title="@string/database">
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+        android:layout="@layout/list_item_view_no_title"
+                android:key="prefDatabaseExport"
+            android:icon="@drawable/ic_database_export"
+                search:keywords="@string/import_export_search_keywords"
+                android:title="@string/database_export_label"
+                android:summary="@string/database_export_summary"/>
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+        android:layout="@layout/list_item_view_no_title"
+                android:key="prefDatabaseImport"
+                search:keywords="@string/import_export_search_keywords"
+                android:title="@string/database_import_label"
+                android:summary="@string/database_import_summary"/>
+    </allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory>
+
+    <allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory
+        android:layout="@layout/preference_category_title" android:title="@string/opml">
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+        android:layout="@layout/list_item_view_no_title"
+                android:key="prefOpmlExport"
+            android:icon="@drawable/ic_import_opml"
+                android:title="@string/opml_export_label"
+                android:summary="@string/opml_export_summary"/>
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+        android:layout="@layout/list_item_view_no_title"
+                android:key="prefOpmlImport"
+                android:title="@string/opml_import_label"
+                android:summary="@string/opml_import_summary"/>
+    </allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory>
+
+</PreferenceScreen>

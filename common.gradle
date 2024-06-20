@@ -1,0 +1,99 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+
+android {
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary true
+        vectorDrawables.generatedDensities = []
+
+        testApplicationId "allen.town.podcast.core.tests"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("GOROUTER_MODULE_NAME", project.getName())
+            }
+        }
+
+        //阿里路由需要
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [GOROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+        flavorDimensions "market"
+        productFlavors {
+            fdroid {
+                dimension "market"
+                versionCode rootProject.ext.googleVersionCode
+            }
+
+            play {
+                dimension "market"
+                versionCode rootProject.ext.googleVersionCode
+            }
+            free {
+                dimension "market"
+                targetSdk rootProject.ext.targetFreeSdkVersion
+            }
+        }
+
+    }
+
+
+    packagingOptions {
+        exclude "META-INF/LICENSE.txt"
+        exclude "META-INF/NOTICE.txt"
+        // Extraneous jsoup files
+        exclude "META-INF/CHANGES"
+        exclude "META-INF/README.md"
+        resources.merges.add("simplelogger.properties")
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    testOptions {
+        animationsDisabled = true
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    lintOptions {
+        disable "GradleDependency"
+        checkDependencies false
+        warningsAsErrors false
+        // true--只报告error
+        ignoreWarnings true
+        abortOnError true
+        checkGeneratedSources = false
+        disable 'Deprecation'
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "androidx.core:core-ktx:1.7.0"
+    api 'com.github.wyjsonGo.GoRouter:GoRouter-Api:2.5.1'
+    kapt 'com.github.wyjsonGo.GoRouter:GoRouter-Compiler:2.5.1'
+}

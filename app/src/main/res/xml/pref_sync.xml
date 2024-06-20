@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/synchronization_all_data_sync">
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+            android:key="pref_synchronization_all_data_sync"
+            android:icon="@drawable/ic_drive"
+            android:layout="@layout/list_item_view_no_title"
+            android:summary="@string/synchronization_all_data_sync_select_summary"
+            android:title="@string/synchronization_all_data_sync_select" />
+    </allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory>
+
+    <allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/synchronization_episodes_sync">
+
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+            android:key="preference_synchronization_description"
+            android:layout="@layout/list_item_view_no_title"
+            app:do_not_accent_icon="true"
+            android:summary="@string/synchronization_summary_unchoosen" />
+
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+            android:key="pref_gpodnet_setlogin_information"
+            android:layout="@layout/list_item_view_no_title"
+            android:summary="@string/pref_gpodnet_setlogin_information_sum"
+            android:title="@string/pref_gpodnet_setlogin_information_title"
+            app:isPreferenceVisible="false" />
+
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+            android:key="pref_synchronization_sync"
+            android:layout="@layout/list_item_view_no_title"
+            android:summary="@string/synchronization_sync_summary"
+            android:title="@string/synchronization_sync_changes_title" />
+
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+            android:key="pref_synchronization_force_full_sync"
+            android:layout="@layout/list_item_view_no_title"
+            android:summary="@string/synchronization_force_sync_summary"
+            android:title="@string/synchronization_full_sync_title" />
+
+        <allen.town.focus_common.common.prefs.supportv7.ATEPreference
+            android:key="pref_synchronization_logout"
+            android:layout="@layout/list_item_view_no_title"
+            android:title="@string/synchronization_logout" />
+    </allen.town.focus_common.common.prefs.supportv7.ATEPreferenceCategory>
+
+</PreferenceScreen>

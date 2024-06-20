@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:ignore="InconsistentLayout"
+    tools:viewBindingIgnore="true">
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navDrawerFragment"
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+    <!-- InconsistentLayout: Tablet layout does not have a drawer -->
+    <!-- viewBindingIgnore: Configurations for main.xml must
+            agree on the root element's ID -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/overview_coordinator_layout"
+        android:fitsSystemWindows="true"
+        android:background="?attr/colorSurface"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main_view"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:foreground="?android:windowContentOverlay"
+            tools:background="@android:color/holo_red_dark" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/audioplayerFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_behavior="allen.town.podcast.view.LockableBottomSheetBehavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <FrameLayout
+            android:id="@+id/bottom_adView"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

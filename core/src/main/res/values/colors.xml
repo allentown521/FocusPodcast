@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="grey100">#f5f5f5</color>
+    <color name="grey600">#757575</color>
+    <color name="light_gray">#bfbfbf</color>
+    <color name="medium_gray">#afafaf</color>
+    <color name="black">#000000</color>
+    <color name="download_success_green">#248800</color>
+    <color name="download_warning_yellow">#F59F00</color>
+    <color name="download_failed_red">@color/md_red_400</color>
+    <color name="image_readability_tint">#80000000</color>
+    <color name="feed_image_bg">#50000000</color>
+    <color name="feed_text_bg">#ccbfbfbf</color>
+    <color name="gray_3">#999999</color>
+    <color name="episode_image_cover">#CCF4F4F4</color>
+
+    <!-- Theme colors -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_elevated_light">#EFEEEE</color>
+    <color name="background_elevated">#EFEEEE</color>
+    <color name="background_darktheme">#21272b</color>
+    <color name="background_elevated_darktheme">#2D3337</color>
+    <color name="highlight_light">#46C6C6C6</color>
+    <color name="highlight">#970B0A0A</color>
+    <color name="highlight_dark">#43707070</color>
+    <color name="highlight_trueblack">#43707070</color>
+    <color name="non_square_icon_background">#AE000000</color>
+    <color name="seek_background_light">#90000000</color>
+    <color name="seek_background_dark">#905B5B5B</color>
+    <color name="navigation_bar_divider_light">#1F000000</color>
+
+    <color name="accent_light">@color/md_deep_purple_500</color>
+    <color name="accent_dark">@color/md_deep_purple_300</color>
+
+    <color name="master_switch_background_light">#DDDDDD</color>
+    <color name="master_switch_background_dark">#191919</color>
+
+    <!-- filter dialog -->
+    <color name="dialog_filter_clear_inactive_light">#666666</color>
+    <color name="dialog_filter_clear_inactive_dark">#bbbbbb</color>
+    <color name="dialog_filter_inactive_light">#eeeeee</color>
+    <color name="dialog_filter_inactive_dark">#555555</color>
+
+    <color name="swipe_dark_gray">#CDD9E4</color>
+    <color name="swipe_dark_red">@color/md_red_300</color>
+    <color name="swipe_purple">@color/md_deep_purple_500</color>
+    <color name="swipe_gray">@color/md_grey_800</color>
+    <color name="swipe_red">@color/md_red_A400</color>
+
+    <!-- 重写了skeleton的颜色，主要是暗色模式 -->
+    <color name="skeleton_mask">#E0E0E0</color>
+    <color name="skeleton_shimmer">#d5d5d5</color>
+
+    <color name="fullscreen_player_next_title">@android:color/white</color>
+    <color name="fullscreen_player_overlay_less">#55000000</color>
+    <color name="fullscreen_player_play_pause_circle_ring">#ffffffff</color>
+    <color name="fullscreen_player_play_pause_current_progress_green">#55c8e6c9</color>
+    <color name="fullscreen_player_play_pause_current_progress_neutral">#55c8d7e6</color>
+    <color name="fullscreen_player_play_pause_current_progress_purple">#55e1bee7</color>
+    <color name="fullscreen_player_play_pause_current_progress_red">#55f7d0d3</color>
+    <color name="fullscreen_player_play_pause_current_progress_white">#55ffffff</color>
+    <color name="fullscreen_player_play_pause_inner_circle">#00dddddd</color>
+    <color name="fullscreen_player_play_pause_pause_throb">#55dddddd</color>
+    <color name="fullscreen_player_play_pause_progress_paused">#00dddddd</color>
+    <color name="fullscreen_player_play_pause_pulse_ring_green">#5543a047</color>
+    <color name="fullscreen_player_play_pause_pulse_ring_material_red">#55e53935</color>
+    <color name="fullscreen_player_play_pause_pulse_ring_neutral">#55757575</color>
+    <color name="fullscreen_player_play_pause_pulse_ring_purple">#55ab47bc</color>
+    <color name="fullscreen_player_play_pause_pulse_ring_red">#55c90925</color>
+    <color name="fullscreen_player_play_pause_throb_green">#55c8e6c9</color>
+    <color name="fullscreen_player_play_pause_throb_neutral">#55c8d7e6</color>
+    <color name="fullscreen_player_play_pause_throb_purple">#55e1bee7</color>
+    <color name="fullscreen_player_play_pause_throb_red">#55f7d0d3</color>
+    <color name="fullscreen_player_playback_speed_off">#66ffffff</color>
+    <color name="fullscreen_player_playback_speed_on">@color/white</color>
+    <color name="fullscreen_player_text_color_with_alpha">#99ffffff</color>
+    <color name="fullscreen_player_thumb_overlay">#11000000</color>
+    <color name="play_pause_progress_button_selector_dark">#1f000000</color>
+    <color name="play_pause_progress_button_selector_white">#1fffffff</color>
+    <color name="white_35_percent_alpha">#59ffffff</color>
+    <color name="white_50_percent_alpha">#99ffffff</color>
+    <color name="white_alpha_30_percent">#4cffffff</color>
+    <color name="white_alpha_35_percent">#5affffff</color>
+    <color name="white_alpha_40_percent">#66ffffff</color>
+
+    <color name="body_text_2">#8a000000</color>
+    <color name="body_text_2_inverse">#b2ffffff</color>
+    <color name="primary_color_5">#dddddd</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
+
+</resources>

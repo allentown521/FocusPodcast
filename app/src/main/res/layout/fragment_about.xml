@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorSurface"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/focusReader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FocusPodcast"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="28dp" />
+
+        <TextView
+            android:id="@+id/version_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Version 1.0"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/credits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp"
+            android:text="@string/made_by"
+            android:textColorLink="?attr/colorAccent"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/opensource"
+            style="@style/aboutSettingsContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/opensource_image"
+                    style="@style/aboutSettingsIcon"
+                    android:src="@drawable/github" />
+
+                <TextView
+                    style="@style/aboutSettingsText"
+                    android:text="@string/opensource" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/twitter_follow_me"
+            style="@style/aboutSettingsContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/twitter_image"
+                    style="@style/aboutSettingsIcon"
+                    android:src="@drawable/ic_action_twitter" />
+
+                <TextView
+                    style="@style/aboutSettingsText"
+                    android:text="@string/twitter_follow_me" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rate_me"
+            style="@style/aboutSettingsContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/rate_image"
+                    style="@style/aboutSettingsIcon"
+                    android:src="@drawable/ic_action_rate" />
+
+                <TextView
+                    style="@style/aboutSettingsText"
+                    android:text="@string/rate_me" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/privacy_policy"
+            style="@style/aboutSettingsContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/privacy_policy_image"
+                    style="@style/aboutSettingsIcon"
+                    android:src="@drawable/ic_action_privacy" />
+
+                <TextView
+                    style="@style/aboutSettingsText"
+                    android:text="@string/privacy_policy" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/check_upgrade"
+            style="@style/aboutSettingsContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/check_upgrade_image"
+                    style="@style/aboutSettingsIcon"
+                    android:src="@drawable/ic_upgrade" />
+
+                <TextView
+                    style="@style/aboutSettingsText"
+                    android:text="@string/check_upgrade" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/share_app"
+            style="@style/aboutSettingsContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/share_app_image"
+                    style="@style/aboutSettingsIcon"
+                    android:src="@drawable/ic_share" />
+
+                <TextView
+                    android:id="@+id/share_app_tv"
+                    style="@style/aboutSettingsText"
+                    android:text="@string/share_to_friends" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/more_apps_of_us"
+            style="@style/aboutSettingsContainer">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/more_apps_of_us_image"
+                    style="@style/aboutSettingsIcon"
+                    android:src="@drawable/ic_more_apps" />
+
+                <TextView
+                    style="@style/aboutSettingsText"
+                    android:text="@string/others_app_of_us" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</ScrollView>
+

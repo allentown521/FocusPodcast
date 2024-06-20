@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:descendantFocusability="blocksDescendants"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="@dimen/listitem_threeline_verticalpadding"
+        android:layout_marginEnd="@dimen/listitem_threeline_textrightpadding"
+        android:layout_marginRight="@dimen/listitem_threeline_textrightpadding"
+        android:layout_marginBottom="@dimen/listitem_threeline_verticalpadding"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtvTitle"
+                style="@style/FocusPodcast.TextView.ListItemPrimaryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                tools:background="@android:color/holo_blue_light"
+                tools:text="@sample/episodes.json/data/title" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/status"
+            style="@style/FocusPodcast.TextView.ListItemSecondaryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Media file - 01/01/1970" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/txtvIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="4dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtvReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?colorControlNormal"
+                android:textSize="13sp"
+                tools:text="@string/design_time_downloaded_log_failure_reason" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <allen.town.podcast.view.PlayPauseProgressButton
+        android:id="@+id/secondaryActionButton"
+        style="@style/Widget_PlayerFM_PlayPauseButton"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="12dp"
+        android:background="?roundSelector"
+        android:visibility="gone"
+        app:circleFillColor="@color/accent_dark"
+        app:circleRingWidth="2dp"
+        app:circleShadowAlpha="30"
+        app:circleShadowRadius="2"
+        app:iconSize="20dp"
+        app:innerSize="32dp"
+        app:pauseIconSrc="@drawable/ic_pause"
+        app:playIconSrc="@drawable/ic_play_48dp"
+        app:progressColorPaused="@color/md_yellow_A400"
+        app:showCircleShadow="false"
+        app:showInnerBorder="false"
+        app:showPulsingAnimation="false" />
+</LinearLayout>

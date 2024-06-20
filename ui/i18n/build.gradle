@@ -1,0 +1,19 @@
+plugins {
+    id("com.android.library")
+}
+apply from: "../../common.gradle"
+
+android {
+    defaultConfig {
+        namespace "allen.town.podcast.ui.i18n"
+    }
+    lintOptions {
+        disable "Typos", "ExtraTranslation", "ImpliedQuantity",
+                "PluralsCandidate", "UnusedQuantity", "TypographyEllipsis"
+    }
+}
+
+dependencies {
+    implementation project(':focus-common')
+    kapt "androidx.annotation:annotation:$annotationVersion"
+}
