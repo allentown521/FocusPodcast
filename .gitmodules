@@ -7,3 +7,6 @@
 [submodule "searchpreference"]
 	path = searchpreference
 	url = https://github.com/allentown521/searchpreference.git
+[submodule "focus-theme"]
+	path = focus-theme
+	url = https://github.com/allentown521/focus-theme.git
