@@ -1,7 +1,6 @@
 package allen.town.podcast.fragment
 
 import allen.town.core.service.GooglePayService
-import allen.town.focus.reader.data.db.table.GooglePlayInAppTable
 import allen.town.focus_common.ad.RewardedAdManager
 import allen.town.focus_common.ads.OnUserEarnedRewardListener
 import allen.town.focus_common.util.BasePreferenceUtil
@@ -10,6 +9,7 @@ import allen.town.focus_common.util.MenuIconUtil.showContextMenuIcon
 import allen.town.focus_common.util.Timber
 import allen.town.focus_common.util.TopSnackbarUtil
 import allen.town.focus_common.views.AccentMaterialDialog
+import allen.town.focus_purchase.data.db.table.GooglePlayInAppTable
 import allen.town.focus_purchase.iap.SupporterManager
 import allen.town.focus_purchase.iap.SupporterManagerWrap
 import allen.town.podcast.MyApp
