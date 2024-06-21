@@ -14,6 +14,7 @@
 package allen.town.podcast.util
 
 import allen.town.focus_common.util.TopSnackbarUtil
+import allen.town.focus_purchase.iap.util.GooglePayUtil.ALIPAY_REMOVE_AD
 import allen.town.podcast.activity.PurchaseActivity
 import allen.town.podcast.core.R
 import android.app.Activity
@@ -44,7 +45,7 @@ object NavigationUtil {
     fun goToProVersion(context: Context, isAlipayRemoveAd: Boolean = false) {
         val intent = Intent(context, PurchaseActivity::class.java)
         if (isAlipayRemoveAd) {
-            intent.putExtra(PurchaseActivity.ALIPAY_REMOVE_AD, true)
+            intent.putExtra(ALIPAY_REMOVE_AD, true)
         }
         context.startActivity(
             intent

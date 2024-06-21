@@ -1,3 +1,4 @@
+package allen.town.podcast.activity
 /*
  * Copyright (c) 2020 Hemanth Savarla.
  *
@@ -12,12 +13,10 @@
  * See the GNU General Public License for more details.
  *
  */
-package allen.town.podcast.activity
 
 import allen.town.core.service.AliPayService
 import allen.town.core.service.GooglePayService
 import allen.town.core.service.PayService
-import allen.town.focus.reader.iap.util.GooglePayUtil.toGoogleSkuDetail
 import allen.town.focus_common.util.Timber
 import allen.town.focus_common.util.TopSnackbarUtil.showSnack
 import allen.town.focus_common.util.Util
@@ -51,6 +50,9 @@ import allen.town.focus_common.extensions.setEdgeToEdgeOrImmersive
 import allen.town.focus_common.extensions.setLightStatusBar
 import allen.town.focus_common.extensions.setStatusBarColor
 import allen.town.focus_purchase.data.db.table.GooglePlayInAppTable
+import allen.town.focus_purchase.iap.util.GooglePayUtil.ALIPAY_REMOVE_AD
+import allen.town.focus_purchase.iap.util.GooglePayUtil.toGoogleSkuDetail
+import allen.town.podcast.activity.SimpleToolbarActivity
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.SkuDetails
 import com.google.android.material.snackbar.Snackbar
@@ -443,7 +445,6 @@ class PurchaseActivity : SimpleToolbarActivity() {
 
     companion object {
         private const val TAG: String = "PurchaseActivity"
-        const val ALIPAY_REMOVE_AD = "alipayRemoveAd"
     }
 
     interface OnSwitchPurchaseInterface {
