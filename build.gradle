@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.9.0'
+    ext.kotlin_version = '1.9.23'
     repositories {
         google()
         mavenCentral()
@@ -48,10 +48,10 @@ project.ext {
     targetSdkVersion = 34
     targetFreeSdkVersion = 33
     //begin -- google的版本号小一点就不会自动更新了
-    versionCode = 58
-    googleVersionCode = 56
+    versionCode = 59
+    googleVersionCode = 58
     //end --
-    versionName = "2.5.0.20240618"
+    versionName = "2.6.0.20240621"
 
     // AndroidX
     annotationVersion = "1.8.0"
