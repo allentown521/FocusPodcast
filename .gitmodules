@@ -1,12 +1,16 @@
 [submodule "focus-common"]
 	path = focus-common
 	url = https://github.com/allentown521/focus-common.git
+	branch = main
 [submodule "focus-purchase"]
 	path = focus-purchase
 	url = https://github.com/allentown521/focus-purchase.git
+	branch = main
 [submodule "searchpreference"]
 	path = searchpreference
 	url = https://github.com/allentown521/searchpreference.git
+	branch = main
 [submodule "focus-theme"]
 	path = focus-theme
 	url = https://github.com/allentown521/focus-theme.git
+	branch = main
