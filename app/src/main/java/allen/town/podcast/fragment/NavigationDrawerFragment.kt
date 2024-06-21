@@ -36,7 +36,6 @@ import allen.town.podcast.event.QueueEvent
 import allen.town.podcast.event.RemoveAdsPurchaseEvent
 import allen.town.podcast.event.UnreadItemsUpdateEvent
 import allen.town.podcast.model.feed.Feed
-import allen.town.podcast.util.NavigationUtil
 import allen.town.podcast.util.NavigationUtil.goToProVersion
 import android.content.Context
 import android.content.DialogInterface
@@ -57,7 +56,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import code.name.monkey.appthemehelper.ThemeStore.Companion.accentColor
-import code.name.monkey.appthemehelper.util.VersionUtils
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.model.KeyPath
