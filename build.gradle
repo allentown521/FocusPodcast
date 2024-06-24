@@ -42,13 +42,11 @@ allprojects {
 project.ext {
     //app info
     applicationId = "allen.town.focus.podcast"
-//    buildToolsVersion = "30.0.3"
     compileSdkVersion = 34 //jdk need 17 and latter
     minSdkVersion = 21
     targetSdkVersion = 34
     targetFreeSdkVersion = 33
-    googleVersionCode = 69
-    //end --
+    versionCode = 69
     versionName = "2.8.0.20240624"
 
     // AndroidX

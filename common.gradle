@@ -33,16 +33,13 @@ android {
         productFlavors {
             fdroid {
                 dimension "market"
-                versionCode rootProject.ext.googleVersionCode
             }
 
             play {
                 dimension "market"
-                versionCode rootProject.ext.googleVersionCode
             }
             free {
                 dimension "market"
-                versionCode rootProject.ext.googleVersionCode
                 targetSdk rootProject.ext.targetFreeSdkVersion
             }
         }
