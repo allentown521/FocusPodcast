@@ -48,7 +48,7 @@ project.ext {
     targetSdkVersion = 34
     targetFreeSdkVersion = 33
     //begin -- google的版本号小一点就不会自动更新了
-    versionCode = 61
+    versionCode = 66
     googleVersionCode = 60
     //end --
     versionName = "2.7.0.20240624"
