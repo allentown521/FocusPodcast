@@ -43,7 +43,7 @@ project.ext {
     //app info
     applicationId = "allen.town.focus.podcast"
 //    buildToolsVersion = "30.0.3"
-    compileSdkVersion = 34 //修改为31后需要吧as的jdk修改为11
+    compileSdkVersion = 34 //jdk need 17 and latter
     minSdkVersion = 21
     targetSdkVersion = 34
     targetFreeSdkVersion = 33
