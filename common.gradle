@@ -42,6 +42,7 @@ android {
             }
             free {
                 dimension "market"
+                versionCode rootProject.ext.versionCode
                 targetSdk rootProject.ext.targetFreeSdkVersion
             }
         }

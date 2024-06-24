@@ -15,7 +15,6 @@ android {
 
     defaultConfig {
         namespace "allen.town.podcast"
-        versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         applicationId rootProject.ext.applicationId
 
