@@ -36,7 +36,8 @@ android {
         }
 
         manifestPlaceholders = [
-                googleAdsKey: secrets['googleAdsKey']
+                googleAdsKey: secrets['googleAdsKey'],
+                dropboxScheme: secrets['dropboxScheme']
         ]
 
         kapt {

@@ -102,22 +102,6 @@
 
         </activity>
         <activity android:name="allen.town.podcast.activity.PurchaseActivity" />
-        <activity
-            android:name="com.dropbox.core.android.AuthActivity"
-            android:exported="true"
-            android:configChanges="orientation|keyboard"
-            android:launchMode="singleTask">
-            <intent-filter>
-
-                <!-- Change this to be db- followed by your app key -->
-                <data android:scheme="db-mg97zk12mma2xqk" />
-
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:name="allen.town.podcast.activity.MainActivity"
