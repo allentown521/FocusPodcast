@@ -18,6 +18,7 @@ import allen.town.focus_common.util.Timber
 import allen.town.focus_common.util.TopSnackbarUtil.showSnack
 import allen.town.focus_common.views.AccentMaterialDialog
 import allen.town.podcast.BuildConfig
+import allen.town.podcast.MyApp
 import allen.town.podcast.MyApp.Companion.instance
 import allen.town.podcast.ProductWrap
 import allen.town.podcast.R
@@ -411,22 +412,25 @@ class MainActivity : SimpleToolbarActivity(), OnSharedPreferenceChangeListener {
     private fun checkUpgrade() {
         Timber.d("app version %s , %s", BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE)
         Timber.d("Android: " + Build.VERSION.RELEASE + " " + Build.MANUFACTURER + " " + Build.MODEL)
-        getUpgradeInfo(
-            "6275d0e6a3842e3a5c34c2f3",
-            "6275d143a3842e3a5c34c3e6",
-            instance.isAlipay
-        ).subscribeOn(
-            Schedulers.io()
-        ).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(Consumer { leanUpgradeBean: LeanUpgradeBean? ->
-                if (leanUpgradeBean != null
-                    && leanUpgradeBean.version_code > BuildConfig.VERSION_CODE
-                ) {
-                    if (!Prefs.lastVersionChecked(leanUpgradeBean.version_code)) {
-                        ProductWrap.doCheck(this@MainActivity, leanUpgradeBean)
+        if(!instance.isDroid){
+            getUpgradeInfo(
+                "6275d0e6a3842e3a5c34c2f3",
+                "6275d143a3842e3a5c34c3e6",
+                instance.isAlipay
+            ).subscribeOn(
+                Schedulers.io()
+            ).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(Consumer { leanUpgradeBean: LeanUpgradeBean? ->
+                    if (leanUpgradeBean != null
+                        && leanUpgradeBean.version_code > BuildConfig.VERSION_CODE
+                    ) {
+                        if (!Prefs.lastVersionChecked(leanUpgradeBean.version_code)) {
+                            ProductWrap.doCheck(this@MainActivity, leanUpgradeBean)
+                        }
                     }
-                }
-            })
+                })
+        }
+
     }
 
     private fun getNotifyFromServer() {
