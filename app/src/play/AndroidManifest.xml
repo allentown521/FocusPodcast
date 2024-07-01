@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <queries>
+        <!-- allow queries from the Dropbox official app for verification during the app-to-app authentication flow
+https://github.com/dropbox/dropbox-sdk-java -->
+        <package android:name="com.dropbox.android" />
+    </queries>
+
     <application>
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

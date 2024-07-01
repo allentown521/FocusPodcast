@@ -4,6 +4,15 @@ import allen.town.focus_common.dialog.WebDAVSettingDialog
 import allen.town.focus_common.util.*
 import allen.town.focus_common.util.TopSnackbarUtil.showSnack
 import allen.town.focus_common.views.AccentProgressDialog
+import allen.town.podcast.MyApp
+import allen.town.podcast.R
+import allen.town.podcast.core.pref.Prefs
+import allen.town.podcast.dialog.RestoreDropboxDialog
+import allen.town.podcast.dialog.RestoreGoogleDriveDialog
+import allen.town.podcast.dropbox.DbxRequestConfigFactory
+import allen.town.podcast.dropbox.DropboxClientFactory
+import allen.town.podcast.googledrive.DriveServiceHelper
+import allen.town.podcast.util.CustomDistribution
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -30,6 +39,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.Scope
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.snackbar.Snackbar
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.http.FileContent
@@ -44,16 +54,6 @@ import com.microsoft.onedrivesdk.picker.Picker
 import com.microsoft.onedrivesdk.saver.ISaver
 import com.microsoft.onedrivesdk.saver.Saver
 import com.microsoft.onedrivesdk.saver.SaverException
-import allen.town.podcast.MyApp
-import allen.town.podcast.R
-import allen.town.podcast.core.pref.Prefs
-import allen.town.podcast.dialog.RestoreDropboxDialog
-import allen.town.podcast.dialog.RestoreGoogleDriveDialog
-import allen.town.podcast.dropbox.DbxRequestConfigFactory
-import allen.town.podcast.dropbox.DropboxClientFactory
-import allen.town.podcast.googledrive.DriveServiceHelper
-import allen.town.podcast.util.CustomDistribution
-import com.google.android.material.snackbar.Snackbar
 import com.paul623.wdsyncer.SyncConfig
 import com.paul623.wdsyncer.SyncManager
 import com.paul623.wdsyncer.api.OnSyncResultListener
@@ -153,13 +153,13 @@ class DriveBackupActivity : SimpleToolbarActivity() {
     fun startOAuth2Authentication(context: Context?, app_key: String?, scope: List<String?>?) {
         if (USE_SLT) {
             Auth.startOAuth2PKCE(
-                context,
+                context!!,
                 app_key,
                 DbxRequestConfigFactory.getRequestConfig(),
                 scope
             )
         } else {
-            Auth.startOAuth2Authentication(context, app_key)
+            Auth.startOAuth2Authentication(context!!, app_key)
         }
     }
 

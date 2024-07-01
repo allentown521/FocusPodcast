@@ -212,7 +212,8 @@ dependencies {
 
     //drive
     playImplementation 'com.microsoft.onedrivesdk:onedrive-picker-android:v2.0'
-    playImplementation 'com.dropbox.core:dropbox-core-sdk:3.1.5'
+    playImplementation 'com.dropbox.core:dropbox-core-sdk:7.0.0'
+    playImplementation 'com.dropbox.core:dropbox-android-sdk:7.0.0'
     playImplementation ('com.google.apis:google-api-services-drive:v3-rev110-1.23.0'){
         exclude group:'com.google.guava'
         exclude group:'commons-logging'
