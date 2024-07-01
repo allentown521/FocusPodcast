@@ -13,5 +13,5 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
 
     playImplementation "com.google.android.gms:play-services-base:$playServicesVersion"
-    implementation "org.conscrypt:conscrypt-android:$conscryptVersion"
+//    implementation "org.conscrypt:conscrypt-android:$conscryptVersion"
 }

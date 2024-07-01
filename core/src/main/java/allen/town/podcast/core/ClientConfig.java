@@ -2,18 +2,17 @@ package allen.town.podcast.core;
 
 import android.content.Context;
 
-import allen.town.podcast.net.ssl.SslProviderInstaller;
+import java.io.File;
 
 import allen.town.podcast.core.pref.PlaybackPreferences;
+import allen.town.podcast.core.pref.Prefs;
 import allen.town.podcast.core.pref.SleepTimerPreferences;
 import allen.town.podcast.core.pref.UsageStatistics;
-import allen.town.podcast.core.pref.Prefs;
 import allen.town.podcast.core.service.download.PodcastHttpClient;
 import allen.town.podcast.core.util.NetworkUtils;
 import allen.town.podcast.core.util.ui.NotificationUtils;
+import allen.town.podcast.net.ssl.SslProviderInstaller;
 import allen.town.podcast.storage.db.Db;
-
-import java.io.File;
 
 /**
  * Stores callbacks for core classes like Services, DB classes etc. and other configuration variables.

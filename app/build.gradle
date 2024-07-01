@@ -194,7 +194,7 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.1.0'
     kapt 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'com.faltenreich:skeletonlayout:4.0.0'
-    implementation 'com.github.ChickenHook:RestrictionBypass:2.2'
+//    implementation 'com.github.ChickenHook:RestrictionBypass:2.2'
 
     playImplementation 'com.google.firebase:firebase-core:21.0.0'
     freeImplementation 'com.google.firebase:firebase-core:21.0.0'
