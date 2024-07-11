@@ -179,7 +179,7 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01'
     // Non-free dependencies:
 //    playImplementation 'com.google.android.play:core:1.8.0'
-    compileOnly "com.google.android.wearable:wearable:$wearableSupportVersion"
+//    compileOnly "com.google.android.wearable:wearable:$wearableSupportVersion"
 //    implementation 'me.tankery.lib:circularSeekBar:1.3.2'
     freeImplementation 'com.baidu.mobstat:mtj-sdk:4.0.3.5'
     implementation 'com.r0adkll:slidableactivity:2.1.0'

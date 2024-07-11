@@ -75,9 +75,9 @@ dependencies {
     api "com.airbnb.android:lottie:$lattieVersion"
 
     // Non-free dependencies:
-    playApi "com.google.android.support:wearable:$wearableSupportVersion"
-    fdroidApi "com.google.android.support:wearable:$wearableSupportVersion"
-    compileOnly "com.google.android.wearable:wearable:$wearableSupportVersion"
+//    playApi "com.google.android.support:wearable:$wearableSupportVersion"
+//    fdroidApi "com.google.android.support:wearable:$wearableSupportVersion"
+//    compileOnly "com.google.android.wearable:wearable:$wearableSupportVersion"
 
     testImplementation 'androidx.test:core:1.2.0'
     testImplementation "org.awaitility:awaitility:$awaitilityVersion"
