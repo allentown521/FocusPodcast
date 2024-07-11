@@ -7,83 +7,32 @@ assignees: ''
 
 ---
 
-name: Bug report
-description: Create a report to help us improve existing features
-labels: ["Type: Possible bug"]
-body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
-  - type: checkboxes
-    id: checklist
-    attributes:
-      label: Checklist
-      options:
-        - label: I have used the search function for [**OPEN**](https://github.com/allentown521/FocusPodcast/issues) issues to see if someone else has already submitted the same bug report.
-          required: true
-        - label: I have **also** used the search function for [**CLOSED**](https://github.com/allentown521/FocusPodcast/issues?q=is%3Aissue+is%3Aclosed) issues to see if the problem is already solved and just waiting to be released.
-          required: true
-        - label: I will describe the problem with as much detail as possible.
-          required: true
-        - label: If the bug only to occurs with a certain podcast, I will include the URL of that podcast.
-          required: true
-  - type: input
-    id: version
-    attributes:
-      label: App version
-      description: The latest version is different on each device, so we need the actual version number found on the settings screen.
-      placeholder: x.y.z
-    validations:
-      required: true
-  - type: dropdown
-    id: source
-    attributes:
-      label: Where did you get the app from
-      multiple: false
-      options:
-        - Google Play
-        - F-Droid
-        - Other
-    validations:
-      required: true
-  - type: input
-    id: android_version
-    attributes:
-      label: Android version
-      description: Please mention if you are using a custom rom!
-    validations:
-      required: true
-  - type: input
-    id: device
-    attributes:
-      label: Device model
-  - type: input
-    id: first
-    attributes:
-      label: First occurred
-      placeholder: about x days/weeks ago
-  - type: textarea
-    id: steps
-    attributes:
-      label: Steps to reproduce
-      placeholder: |
-        1. This
-        2. Then that
-        3. Then this
-        4. Etc.
-  - type: textarea
-    id: expected
-    attributes:
-      label: Expected behaviour
-      description: After following the steps, what did you think FocusPodcast would do?
-  - type: textarea
-    id: current
-    attributes:
-      label: Current behaviour
-      description: What did FocusPodcast do instead? Screenshots might help. Usually, you can take a screenshot of your smartphone by pressing *Power* + *Volume down* for a few seconds.
-  - type: textarea
-    id: logs
-    attributes:
-      label: Logs
-      description: If you are experiencing a crash, including the stacktrace will likely get it fixed sooner. FocusPodcast has an `Report Bug` feature for this. Then you can email me  with the logs
+**Describe the bug**
+A clear and concise description of what the bug is.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected behavior**
+A clear and concise description of what you expected to happen.
+
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Desktop (please complete the following information):**
+ - OS: [e.g. iOS]
+ - Browser [e.g. chrome, safari]
+ - Version [e.g. 22]
+
+**Smartphone (please complete the following information):**
+ - Device: [e.g. iPhone6]
+ - OS: [e.g. iOS8.1]
+ - Browser [e.g. stock browser, safari]
+ - Version [e.g. 22]
+
+**Additional context**
+Add any other context about the problem here.

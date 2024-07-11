@@ -7,54 +7,14 @@ assignees: ''
 
 ---
 
-name: Feature request
-description: Request a new feature or enhancement
-labels: ["Needs: Triage", "Type: Feature request"]
-body:
-  - type: checkboxes
-    id: checklist
-    attributes:
-      label: Checklist
-      options:
-        - label: I have used the search function for [**OPEN**](https://github.com/allentown521/FocusPodcast/issues) issues to see if someone else has already submitted the same feature request.
-          required: true
-        - label: I have **also** used the search function for [**CLOSED**](https://github.com/allentown521/FocusPodcast/issues?q=is%3Aissue+is%3Aclosed) issues to see if the feature was already implemented and is just waiting to be released, or if the feature was rejected.
-          required: true
-        - label: I will describe the problem with as much detail as possible.
-          required: true
-        - label: This request contains only one single feature, **not** a list of multiple (related) features.
-          required: true
-  - type: input
-    id: version
-    attributes:
-      label: App version
-      description: The latest version is different on each device, so we need the actual version number found on the settings screen.
-      placeholder: x.y.z
-    validations:
-      required: true
-  - type: dropdown
-    id: source
-    attributes:
-      label: Where did you get the app from
-      multiple: false
-      options:
-        - Google Play
-        - F-Droid
-        - Other
-    validations:
-      required: true
-  - type: textarea
-    id: feature
-    attributes:
-      label: Feature or improvement you want
-      description: Try to be as specific as possible. Please not only explain what the feature does, but also how.
-  - type: textarea
-    id: reason
-    attributes:
-      label: Why should this be added?
-      description: What problem does the feature solve? In what use-cases is the feature needed?
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: Screenshots / Drawings / Technical details
-      description: If your request is about (or includes) changing or extending the UI, describe what the UI would look like and how the user would interact with it.
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
