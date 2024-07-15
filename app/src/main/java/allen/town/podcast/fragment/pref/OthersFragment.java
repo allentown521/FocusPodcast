@@ -7,7 +7,6 @@ import android.os.Bundle;
 import java.util.Locale;
 
 import allen.town.focus_common.ui.customtabs.BrowserLauncher;
-import allen.town.focus_common.util.Timber;
 import allen.town.podcast.MyApp;
 import allen.town.podcast.R;
 import allen.town.podcast.activity.SettingsActivity;
@@ -43,8 +42,7 @@ public class OthersFragment extends AbsSettingsFragment {
             return true;
         });
         findPreference(PREF_VIEW_FORUM).setOnPreferenceClickListener(preference -> {
-            BrowserLauncher.openUrl(getActivity(), isChina ?
-                    "https://support.qq.com/product/414482" : "https://focuspodcast.canny.io/");
+            BrowserLauncher.openUrl(getActivity(), "https://focuspodcast.canny.io/");
             return true;
         });
         findPreference(PREF_CHANGE_LOG).setOnPreferenceClickListener(preference -> {
