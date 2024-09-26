@@ -13,9 +13,9 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <!-- target 33 -->
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
-    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />-->
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />-->
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />-->
 
     <supports-screens
         android:anyDensity="true"

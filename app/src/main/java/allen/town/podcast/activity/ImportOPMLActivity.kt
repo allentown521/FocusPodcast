@@ -127,27 +127,14 @@ class ImportOPMLActivity : SimpleToolbarActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
             && uri.toString().contains(Environment.getExternalStorageDirectory().toString())
         ) {
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                val permission = ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.READ_MEDIA_IMAGES
-                )
-                if (permission != PackageManager.PERMISSION_GRANTED) {
-                    requestPermission()
-                    return
-                }
-            }else{
-                val permission = ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-                if (permission != PackageManager.PERMISSION_GRANTED) {
-                    requestPermission()
-                    return
-                }
+            val permission = ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                requestPermission()
+                return
             }
-
         }
         startImport()
     }
@@ -202,11 +189,7 @@ class ImportOPMLActivity : SimpleToolbarActivity() {
     }
 
     private fun requestPermission() {
-        requestPermissionLauncher.launch(
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-                Manifest.permission.READ_MEDIA_IMAGES
-                else
-            Manifest.permission.READ_EXTERNAL_STORAGE)
+        requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
 
