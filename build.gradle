@@ -24,7 +24,19 @@ allprojects {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
-        jcenter()
+        //aliyun maven for old library
+        maven { url "https://maven.aliyun.com/repository/central" }
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        maven { url "https://maven.aliyun.com/repository/spring" }
+        maven { url "https://maven.aliyun.com/repository/spring-plugin" }
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://maven.aliyun.com/repository/releases" }
+        maven { url "https://maven.aliyun.com/repository/snapshots" }
+        maven { url "https://maven.aliyun.com/repository/grails-core" }
+        maven { url "https://maven.aliyun.com/repository/mapr-public" }
+        maven { url "https://maven.aliyun.com/repository/apache-snapshots" }
         //[Android]依赖了包含aar包的库后出现Failed to resolve库aar包问题的解决办法
         flatDir {
             dirs project(':focus-common').file('libs')
@@ -46,8 +58,8 @@ project.ext {
     minSdkVersion = 21
     targetSdkVersion = 34
     targetFreeSdkVersion = 33
-    versionCode = 70
-    versionName = "2.8.1.20240715"
+    versionCode = 71
+    versionName = "2.8.2.20240925"
 
     // AndroidX
     annotationVersion = "1.8.0"
