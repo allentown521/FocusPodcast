@@ -68,11 +68,9 @@ android {
 
     buildTypes {
         debug {
-            resValue "string", "provider_authority", "allen.town.focus.podcast.file_provider"
             signingConfig signingConfigs.debugConfig
         }
         release {
-            resValue "string", "provider_authority", "allen.town.focus.podcast.file_provider"
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true

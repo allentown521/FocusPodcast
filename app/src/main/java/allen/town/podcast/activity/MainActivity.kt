@@ -6,7 +6,12 @@ import allen.town.focus_common.ad.ConsentRequestManager
 import allen.town.focus_common.ad.InterstitialAdManager
 import allen.town.focus_common.ad.RewardedAdManager
 import allen.town.focus_common.dialog.RatingDialog
-import allen.town.focus_common.extensions.*
+import allen.town.focus_common.extensions.notificationRequestCode
+import allen.town.focus_common.extensions.requestNotificationPermission
+import allen.town.focus_common.extensions.setLightNavigationBarAuto
+import allen.town.focus_common.extensions.setLightStatusBarAuto
+import allen.town.focus_common.extensions.setNavigationBarColor
+import allen.town.focus_common.extensions.surfaceColor
 import allen.town.focus_common.http.LeanHttpClient
 import allen.town.focus_common.http.LeanHttpClient.getUpgradeInfo
 import allen.town.focus_common.http.bean.LeanUpgradeBean
@@ -18,7 +23,6 @@ import allen.town.focus_common.util.Timber
 import allen.town.focus_common.util.TopSnackbarUtil.showSnack
 import allen.town.focus_common.views.AccentMaterialDialog
 import allen.town.podcast.BuildConfig
-import allen.town.podcast.MyApp
 import allen.town.podcast.MyApp.Companion.instance
 import allen.town.podcast.ProductWrap
 import allen.town.podcast.R
@@ -33,9 +37,20 @@ import allen.town.podcast.event.MessageEvent
 import allen.town.podcast.event.PurchaseEvent
 import allen.town.podcast.event.RemoveAdsPurchaseEvent
 import allen.town.podcast.event.SubscribedFeedLimitEvent
-import allen.town.podcast.fragment.*
+import allen.town.podcast.fragment.AudioPlayerFragment
+import allen.town.podcast.fragment.DiscoverFragment
+import allen.town.podcast.fragment.DownloadPagerFragment
+import allen.town.podcast.fragment.EpisodesFragment
+import allen.town.podcast.fragment.FavoriteEpisodesFragment
+import allen.town.podcast.fragment.FeedItemlistFragment
+import allen.town.podcast.fragment.LocalSearchFragment
+import allen.town.podcast.fragment.NavigationDrawerFragment
 import allen.town.podcast.fragment.NavigationDrawerFragment.Companion.getLastNavFragment
 import allen.town.podcast.fragment.NavigationDrawerFragment.Companion.saveLastNavFragment
+import allen.town.podcast.fragment.PlaybackHistoryFragment
+import allen.town.podcast.fragment.PlaylistFragment
+import allen.town.podcast.fragment.SubFeedsFragment
+import allen.town.podcast.fragment.TransitionEffect
 import allen.town.podcast.model.feed.Feed
 import allen.town.podcast.playback.LibraryViewModel
 import allen.town.podcast.playback.getSelectedAudioPlayerFragment
@@ -49,7 +64,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.media.AudioManager
@@ -69,7 +83,6 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -93,7 +106,7 @@ import org.apache.commons.lang3.Validate
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.util.*
+import java.util.Locale
 
 
 /**
@@ -210,6 +223,9 @@ class MainActivity : SimpleToolbarActivity(), OnSharedPreferenceChangeListener {
         RewardedAdManager.loadRewardedAd(this)
         InterstitialAdManager.loadAd(this)
         requestNotificationPermission()
+        if (!instance.isDroid && instance.needOpenPurchaseWhenAppOpen) {
+            instance.checkSupporter(this, true)
+        }
 
     }
 

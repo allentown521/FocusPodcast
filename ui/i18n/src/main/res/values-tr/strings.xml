@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Aktivite ve fragment başlıkları -->
     <string name="app_name" translatable="false">FocusPodcast</string>
-    <string name="provider_authority" translatable="false">allen.town.podcast.provider</string>
     <string name="feed_update_receiver_name">Abonelikleri Güncelle</string>
     <string name="feeds_label">Podcastler</string>
     <string name="statistics_label">Oynatma İstatistikleri</string>
