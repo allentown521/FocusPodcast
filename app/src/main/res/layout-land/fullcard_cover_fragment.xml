@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:foreground="?rectSelector"
+                android:background="?rectSelector"
                 android:importantForAccessibility="no"
                 android:scaleType="centerCrop"
                 squareImageView:direction="height"
