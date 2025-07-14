@@ -54,12 +54,12 @@ allprojects {
 project.ext {
     //app info
     applicationId = "allen.town.focus.podcast"
-    compileSdkVersion = 34 //jdk need 17 and latter
+    compileSdkVersion = 35 //jdk need 17 and latter
     minSdkVersion = 21
-    targetSdkVersion = 34
+    targetSdkVersion = 35
     targetFreeSdkVersion = 33
-    versionCode = 72
-    versionName = "2.8.3.20241023"
+    versionCode = 78
+    versionName = "2.8.3.20250713"
 
     // AndroidX
     annotationVersion = "1.8.0"
