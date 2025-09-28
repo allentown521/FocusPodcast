@@ -58,8 +58,8 @@ project.ext {
     minSdkVersion = 21
     targetSdkVersion = 35
     targetFreeSdkVersion = 33
-    versionCode = 78
-    versionName = "2.8.3.20250713"
+    versionCode = 79
+    versionName = "2.8.5.20250928"
 
     // AndroidX
     annotationVersion = "1.8.0"
