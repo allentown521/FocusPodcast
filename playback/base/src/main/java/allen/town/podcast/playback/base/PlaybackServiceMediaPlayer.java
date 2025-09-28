@@ -3,15 +3,15 @@ package allen.town.podcast.playback.base;
 import android.content.Context;
 import android.media.AudioManager;
 import android.net.wifi.WifiManager;
-import androidx.annotation.NonNull;
 import android.util.Log;
 import android.util.Pair;
 import android.view.SurfaceHolder;
 
-import java.util.List;
-import java.util.concurrent.Future;
-
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.util.List;
+
 import allen.town.podcast.model.playback.MediaType;
 import allen.town.podcast.model.playback.Playable;
 
@@ -26,12 +26,7 @@ import allen.town.podcast.model.playback.Playable;
  * and remote (cast devices) playback.
  */
 public abstract class PlaybackServiceMediaPlayer {
-    private static final String TAG = "baseMediaPlayer";
-
-    /**
-     * Return value of some PSMP methods if the method call failed.
-     */
-    public static final int INVALID_TIME = -1;
+    private static final String TAG = "PlaybackSvcMediaPlayer";
 
     private volatile PlayerStatus oldPlayerStatus;
     protected volatile PlayerStatus playerStatus;
@@ -45,7 +40,7 @@ public abstract class PlaybackServiceMediaPlayer {
     protected final Context context;
 
     protected PlaybackServiceMediaPlayer(@NonNull Context context,
-                               @NonNull PSMPCallback callback){
+                                         @NonNull PSMPCallback callback) {
         this.context = context;
         this.callback = callback;
 
@@ -157,20 +152,13 @@ public abstract class PlaybackServiceMediaPlayer {
      */
     public abstract float getPlaybackSpeed();
 
+    public abstract boolean getSkipSilence();
+
     /**
      * Sets the playback volume.
      * This method is executed on an internal executor service.
      */
     public abstract void setVolume(float volumeLeft, float volumeRight);
-
-    /**
-     * Returns true if the mediaplayer can mix stereo down to mono
-     */
-    public abstract boolean canDownmix();
-
-    public abstract void setDownmix(boolean enable);
-
-    public abstract void setLoudness(boolean enable);
 
     public abstract MediaType getCurrentMediaType();
 
@@ -243,8 +231,8 @@ public abstract class PlaybackServiceMediaPlayer {
      *
      * @see #endPlayback(boolean, boolean, boolean, boolean)
      */
-    public Future<?> stopPlayback(boolean toStoppedState) {
-        return endPlayback(false, false, false, toStoppedState);
+    public void stopPlayback(boolean toStoppedState) {
+        endPlayback(false, false, false, toStoppedState);
     }
 
     /**
@@ -273,8 +261,8 @@ public abstract class PlaybackServiceMediaPlayer {
      *
      * @return a Future, just for the purpose of tracking its execution.
      */
-    protected abstract Future<?> endPlayback(boolean hasEnded, boolean wasSkipped,
-                                             boolean shouldContinue, boolean toStoppedState);
+    protected abstract void endPlayback(boolean hasEnded, boolean wasSkipped,
+                                        boolean shouldContinue, boolean toStoppedState);
 
     /**
      * @return {@code true} if the WifiLock feature should be used, {@code false} otherwise.
@@ -313,11 +301,11 @@ public abstract class PlaybackServiceMediaPlayer {
      * @param newStatus The new PlayerStatus. This must not be null.
      * @param newMedia  The new playable object of the PSMP object. This can be null.
      * @param position  The position to be set to the current Playable object in case playback started or paused.
-     *                  Will be ignored if given the value of {@link #INVALID_TIME}.
+     *                  Will be ignored if given the value of {@link Playable#INVALID_TIME}.
      */
     protected final synchronized void setPlayerStatus(@NonNull PlayerStatus newStatus,
                                                       Playable newMedia, int position) {
-//        Log.d(TAG, this.getClass().getSimpleName() + ": Setting player status to " + newStatus);
+        Log.d(TAG, this.getClass().getSimpleName() + ": Setting player status to " + newStatus);
 
         this.oldPlayerStatus = playerStatus;
         this.playerStatus = newStatus;
@@ -343,7 +331,7 @@ public abstract class PlaybackServiceMediaPlayer {
      * @see #setPlayerStatus(PlayerStatus, Playable, int)
      */
     protected final void setPlayerStatus(@NonNull PlayerStatus newStatus, Playable newMedia) {
-        setPlayerStatus(newStatus, newMedia, INVALID_TIME);
+        setPlayerStatus(newStatus, newMedia, Playable.INVALID_TIME);
     }
 
     public interface PSMPCallback {
@@ -373,14 +361,30 @@ public abstract class PlaybackServiceMediaPlayer {
      * Holds information about a PSMP object.
      */
     public static class PSMPInfo {
-        public final PlayerStatus oldPlayerStatus;
-        public PlayerStatus playerStatus;
-        public Playable playable;
+        private final PlayerStatus oldPlayerStatus;
+        private final PlayerStatus playerStatus;
+        private Playable playable;
 
         public PSMPInfo(PlayerStatus oldPlayerStatus, PlayerStatus playerStatus, Playable playable) {
             this.oldPlayerStatus = oldPlayerStatus;
             this.playerStatus = playerStatus;
             this.playable = playable;
+        }
+
+        public PlayerStatus getOldPlayerStatus() {
+            return oldPlayerStatus;
+        }
+
+        public PlayerStatus getPlayerStatus() {
+            return playerStatus;
+        }
+
+        public Playable getPlayable() {
+            return playable;
+        }
+
+        public void setPlayable(final Playable newPlayable) {
+            playable = newPlayable;
         }
     }
 }

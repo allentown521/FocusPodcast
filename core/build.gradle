@@ -68,9 +68,9 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 
-    implementation "com.google.android.exoplayer:exoplayer-core:$exoPlayerVersion"
-    implementation "com.google.android.exoplayer:exoplayer-ui:$exoPlayerVersion"
-    implementation "com.google.android.exoplayer:extension-okhttp:$exoOkhttpExtensionPlayerVersion"
+    implementation "androidx.car.app:app:1.4.0-rc02"
+    implementation "androidx.media3:media3-exoplayer:$media3Version"
+    implementation "androidx.media3:media3-ui:$media3Version"
     implementation "com.github.AntennaPod:AntennaPod-AudioPlayer:$audioPlayerVersion"
     api "com.airbnb.android:lottie:$lattieVersion"
 

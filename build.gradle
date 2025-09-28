@@ -86,7 +86,7 @@ project.ext {
     rxAndroidVersion = "2.1.1"
     rxJavaVersion = "2.2.2"
     iconifyVersion = "2.2.2"
-    exoPlayerVersion = "2.15.1"
+    media3Version = "1.8.0"
     exoOkhttpExtensionPlayerVersion = "2.14.2"
     audioPlayerVersion = "v2.0.0"
     lattieVersion = "5.0.3"

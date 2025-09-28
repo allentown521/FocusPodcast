@@ -1,18 +1,20 @@
 package allen.town.podcast.core.pref;
 
+import static allen.town.podcast.model.feed.FeedPreferences.SPEED_USE_GLOBAL;
+
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import androidx.preference.PreferenceManager;
 
-import android.util.Log;
+import org.greenrobot.eventbus.EventBus;
+
 import allen.town.podcast.event.PlayerStatusEvent;
 import allen.town.podcast.model.feed.FeedMedia;
+import allen.town.podcast.model.feed.FeedPreferences;
 import allen.town.podcast.model.playback.MediaType;
 import allen.town.podcast.model.playback.Playable;
 import allen.town.podcast.playback.base.PlayerStatus;
-import org.greenrobot.eventbus.EventBus;
-
-import static allen.town.podcast.model.feed.FeedPreferences.SPEED_USE_GLOBAL;
 
 /**
  * Provides access to preferences set by the playback service. A private
@@ -60,6 +62,9 @@ public class PlaybackPreferences implements SharedPreferences.OnSharedPreference
      */
     private static final String PREF_CURRENTLY_PLAYING_TEMPORARY_PLAYBACK_SPEED
             = "allen.town.podcast.preferences.temporaryPlaybackSpeed";
+
+    private static final String PREF_CURRENTLY_PLAYING_TEMPORARY_SKIP_SILENCE
+            = "de.danoeh.antennapod.preferences.temporarySkipSilence";
 
 
     /**
@@ -192,5 +197,24 @@ public class PlaybackPreferences implements SharedPreferences.OnSharedPreference
                 playerStatusAsInt = PLAYER_STATUS_OTHER;
         }
         return playerStatusAsInt;
+    }
+
+    public static FeedPreferences.SkipSilence getCurrentlyPlayingTemporarySkipSilence() {
+        return FeedPreferences.SkipSilence.fromCode(prefs.getInt(
+                PREF_CURRENTLY_PLAYING_TEMPORARY_SKIP_SILENCE, FeedPreferences.SkipSilence.GLOBAL.code));
+    }
+
+    public static void setCurrentlyPlayingTemporarySkipSilence(boolean skipSilence) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(PREF_CURRENTLY_PLAYING_TEMPORARY_SKIP_SILENCE, skipSilence
+                ? FeedPreferences.SkipSilence.AGGRESSIVE.code : FeedPreferences.SkipSilence.OFF.code);
+        editor.apply();
+    }
+
+    public static void clearCurrentlyPlayingTemporaryPlaybackSettings() {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove(PREF_CURRENTLY_PLAYING_TEMPORARY_PLAYBACK_SPEED);
+        editor.remove(PREF_CURRENTLY_PLAYING_TEMPORARY_SKIP_SILENCE);
+        editor.apply();
     }
 }

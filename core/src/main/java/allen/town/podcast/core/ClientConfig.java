@@ -1,6 +1,8 @@
 package allen.town.podcast.core;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import java.io.File;
 
@@ -8,6 +10,7 @@ import allen.town.podcast.core.pref.PlaybackPreferences;
 import allen.town.podcast.core.pref.Prefs;
 import allen.town.podcast.core.pref.SleepTimerPreferences;
 import allen.town.podcast.core.pref.UsageStatistics;
+import allen.town.podcast.core.service.UserAgentInterceptor;
 import allen.town.podcast.core.service.download.PodcastHttpClient;
 import allen.town.podcast.core.util.NetworkUtils;
 import allen.town.podcast.core.util.ui.NotificationUtils;
@@ -35,6 +38,14 @@ public class ClientConfig {
         if (initialized) {
             return;
         }
+
+        try {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            UserAgentInterceptor.USER_AGENT = "FocusPodcast/" + packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
         Db.init(context);
         Prefs.init(context);
         UsageStatistics.init(context);

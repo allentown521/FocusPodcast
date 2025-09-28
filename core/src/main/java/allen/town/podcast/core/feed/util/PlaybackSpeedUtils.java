@@ -1,15 +1,17 @@
 package allen.town.podcast.core.feed.util;
 
+import static allen.town.podcast.model.feed.FeedPreferences.SPEED_USE_GLOBAL;
+
 import android.util.Log;
+
+import allen.town.podcast.core.pref.PlaybackPreferences;
+import allen.town.podcast.core.pref.Prefs;
 import allen.town.podcast.model.feed.Feed;
 import allen.town.podcast.model.feed.FeedItem;
 import allen.town.podcast.model.feed.FeedMedia;
+import allen.town.podcast.model.feed.FeedPreferences;
 import allen.town.podcast.model.playback.MediaType;
-import allen.town.podcast.core.pref.PlaybackPreferences;
-import allen.town.podcast.core.pref.Prefs;
 import allen.town.podcast.model.playback.Playable;
-
-import static allen.town.podcast.model.feed.FeedPreferences.SPEED_USE_GLOBAL;
 
 /**
  * Utility class to use the appropriate playback speed based on {@link PlaybackPreferences}
@@ -49,5 +51,29 @@ public final class PlaybackSpeedUtils {
         }
 
         return playbackSpeed;
+    }
+
+    /**
+     * Returns the currently configured skip silence for the specified media.
+     */
+    public static FeedPreferences.SkipSilence getCurrentSkipSilencePreference(Playable media) {
+        FeedPreferences.SkipSilence skipSilence = FeedPreferences.SkipSilence.GLOBAL;
+        if (media instanceof FeedMedia) {
+            FeedMedia feedMedia = (FeedMedia) media;
+            if (PlaybackPreferences.getCurrentlyPlayingFeedMediaId() == feedMedia.getId()) {
+                skipSilence = PlaybackPreferences.getCurrentlyPlayingTemporarySkipSilence();
+            }
+            if (skipSilence == FeedPreferences.SkipSilence.GLOBAL && feedMedia.getItem() != null) {
+                Feed feed = feedMedia.getItem().getFeed();
+                if (feed != null && feed.getPreferences() != null) {
+                    skipSilence = feed.getPreferences().getFeedSkipSilence();
+                }
+            }
+        }
+        if (skipSilence == FeedPreferences.SkipSilence.GLOBAL) {
+            skipSilence = Prefs.isSkipSilence()
+                    ? FeedPreferences.SkipSilence.AGGRESSIVE : FeedPreferences.SkipSilence.OFF;
+        }
+        return skipSilence;
     }
 }

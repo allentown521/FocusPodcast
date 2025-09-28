@@ -1,7 +1,8 @@
 package allen.town.podcast.model.feed;
 
-import androidx.annotation.NonNull;
 import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -20,6 +21,15 @@ public class FeedPreferences implements Serializable {
         GLOBAL,
         YES,
         NO
+    }
+
+    private SkipSilence feedSkipSilence;
+
+    public SkipSilence getFeedSkipSilence() {
+        if (feedPlaybackSpeed == SPEED_USE_GLOBAL) {
+            return SkipSilence.GLOBAL;
+        }
+        return feedSkipSilence;
     }
 
     @NonNull
@@ -74,6 +84,10 @@ public class FeedPreferences implements Serializable {
     private int feedSkipEnding;
     private boolean showEpisodeNotification;
     private final Set<String> tags = new HashSet<>();
+
+    public void setFeedSkipSilence(SkipSilence skipSilence) {
+        feedSkipSilence = skipSilence;
+    }
 
     public FeedPreferences(long feedID, boolean autoDownload, AutoDeleteAction autoDeleteAction,
                            VolumeAdaptionSetting volumeAdaptionSetting, String username, String password) {
@@ -236,6 +250,53 @@ public class FeedPreferences implements Serializable {
 
     public int getFeedSkipEnding() {
         return feedSkipEnding;
+    }
+
+    public enum SkipSilence {
+        OFF(0), GLOBAL(1), AGGRESSIVE(2);
+
+        public final int code;
+
+        SkipSilence(int code) {
+            this.code = code;
+        }
+
+        public static SkipSilence fromCode(int code) {
+            for (SkipSilence s : values()) {
+                if (s.code == code) {
+                    return s;
+                }
+            }
+            return GLOBAL;
+        }
+    }
+
+    public enum AutoDownloadSetting {
+        DISABLED(0),
+        ENABLED(2),
+        GLOBAL(1);
+
+        public final int code;
+
+        AutoDownloadSetting(int code) {
+            this.code = code;
+        }
+
+        public static AutoDownloadSetting fromInteger(int code) {
+            for (AutoDownloadSetting setting : values()) {
+                if (code == setting.code) {
+                    return setting;
+                }
+            }
+            return GLOBAL;
+        }
+
+        public static AutoDownloadSetting fromBoolean(boolean enabled) {
+            if (enabled) {
+                return ENABLED;
+            }
+            return DISABLED;
+        }
     }
 
     public Set<String> getTags() {
