@@ -50,9 +50,6 @@ dependencies {
     implementation "androidx.preference:preference:$preferenceVersion"
     implementation "androidx.work:work-runtime:$workManagerVersion"
     implementation "com.google.android.material:material:$googleMaterialVersion"
-    implementation 'jp.wasabeef:glide-transformations:4.3.0'
-    // If you want to use the GPU Filters
-    implementation 'jp.co.cyberagent.android:gpuimage:2.1.0'
 
     implementation "org.apache.commons:commons-lang3:$commonslangVersion"
     implementation "commons-io:commons-io:$commonsioVersion"

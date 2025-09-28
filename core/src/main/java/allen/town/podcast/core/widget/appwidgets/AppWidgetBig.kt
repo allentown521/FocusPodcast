@@ -15,6 +15,10 @@
 package allen.town.podcast.core.widget.appwidgets
 
 import allen.town.focus_common.util.RetroUtil
+import allen.town.podcast.core.R
+import allen.town.podcast.core.feed.util.ImageResourceUtils
+import allen.town.podcast.core.widget.WidgetUpdater
+import allen.town.podcast.core.widget.base.BaseAppWidget
 import android.app.PendingIntent
 import android.content.Context
 import android.graphics.Bitmap
@@ -23,18 +27,12 @@ import android.util.Log
 import android.widget.RemoteViews
 import code.name.monkey.appthemehelper.util.MaterialValueHelper
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
-import allen.town.podcast.core.R
-import allen.town.podcast.core.feed.util.ImageResourceUtils
-import allen.town.podcast.core.widget.WidgetUpdater
-import allen.town.podcast.core.widget.base.BaseAppWidget
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import jp.wasabeef.glide.transformations.BlurTransformation
 
 class AppWidgetBig : BaseAppWidget() {
     private var target: Target<Bitmap>? = null // for cancellation
@@ -134,9 +132,6 @@ class AppWidgetBig : BaseAppWidget() {
             // Load the album cover async and push the update on completion
             val appContext = context.applicationContext
 
-            val multi = MultiTransformation<Bitmap>(
-                BlurTransformation(25),
-            )
 
             Completable.fromAction {
             }
@@ -157,7 +152,7 @@ class AppWidgetBig : BaseAppWidget() {
 
                     //这里结合centerCrop就没有blur效果了
                     target = Glide.with(appContext).asBitmap()
-                        .apply(/*RequestOptions.bitmapTransform(BlurTransformation(25))*/RequestOptions.centerCropTransform())
+                        .apply(RequestOptions.centerCropTransform())
                         .load(
                             if (widgetState.media.imageLocation.isNullOrEmpty()) ImageResourceUtils.getFallbackImageLocation(
                                 widgetState.media
