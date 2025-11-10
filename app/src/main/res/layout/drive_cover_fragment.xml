@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_marginHorizontal="16dp"
         android:layout_weight="0"
-        android:foreground="?rectSelector"
+        android:background="?rectSelector"
         android:importantForAccessibility="no"
         android:scaleType="fitCenter"
         squareImageView:direction="height"

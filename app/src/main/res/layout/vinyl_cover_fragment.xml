@@ -19,7 +19,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_weight="0"
         android:visibility="gone"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:importantForAccessibility="no"
         android:scaleType="fitCenter"
         squareImageView:direction="height"
