@@ -64,7 +64,12 @@ public class PodWebView extends WebView implements View.OnLongClickListener {
             // Use cached resources, even if they have expired
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+            // COMPATIBILITY_MODE keeps passive sub-resources (cover art,
+            // images) loading on an https podcast show notes page while
+            // blocking active mixed content like remote scripts.
+            // ALWAYS_ALLOW is the strictly less safe option in the
+            // WebSettings javadoc.
+            getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
         }
         getSettings().setUseWideViewPort(false);
         getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
